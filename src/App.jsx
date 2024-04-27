@@ -1,10 +1,31 @@
+import ProductList from "./features/product-list/ProductList"
+import HomePage from "./pages/HomePage"
+import LoginPage from "./pages/LoginPage"
+import SignUpPage from "./pages/SignUpPage"
+import {createBrowserRouter, RouterProvider, Route, Link,} from "react-router-dom"; 
+
+
+const router = createBrowserRouter([
+  {
+    path: "/",
+    element: (<HomePage></HomePage>),
+  },
+  {
+    path: "/login",
+    element: (<LoginPage></LoginPage>),
+  },
+  {
+    path: "/signup",
+    element: (<SignUpPage></SignUpPage>),
+  },
+]);
 
 function App() {
 
   return (
-    <>
-     <h1 className="text-red-600 text-3xl">Hello</h1>
-    </>
+    <div className="App">
+      <RouterProvider router={router} />
+    </div>
   )
 }
 
