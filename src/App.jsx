@@ -1,6 +1,7 @@
 import Layout from "./features/layout/Layout";
 import ProductList from "./features/product-list/ProductList"
 import CartPage from "./pages/CartPage";
+import CheckoutPage from "./pages/CheckoutPage";
 import HomePage from "./pages/HomePage"
 import LoginPage from "./pages/LoginPage"
 import SignUpPage from "./pages/SignUpPage"
@@ -14,6 +15,7 @@ const router = createBrowserRouter(
       <Route path='/login' element={<LoginPage/>}/>
       <Route path='/signup' element={<SignUpPage/>}/>
       <Route path='/cart' element={<CartPage/>}/>
+      <Route path='/checkout' element={<CheckoutPage/>}/>
     </Route>
   )
 );

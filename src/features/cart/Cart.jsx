@@ -38,7 +38,7 @@ const Cart = () => {
   return (
     <>
       <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 bg-white rounded-lg">
-        <h2 className="text-3xl text-center font-semibold pt-5">Cart (2 items)</h2>
+        <h2 className="text-lg md:text-3xl font-semibold py-3 border-b">Cart (2 items)</h2>
 
         <div className="px-4 py-6 sm:px-6">
           <div className="flow-root">
@@ -99,20 +99,17 @@ const Cart = () => {
             Shipping and taxes calculated at checkout.
           </p>
           <div className="mt-6">
-            <a
-              href="#"
-              className="flex items-center justify-center rounded-md border border-transparent bg-indigo-600 px-6 py-3 text-base font-medium text-white shadow-sm hover:bg-indigo-700"
-            >
+            <Link to='/checkout'
+              className="flex items-center justify-center rounded-md border border-transparent bg-indigo-600 px-6 py-3 text-base font-medium text-white shadow-sm hover:bg-indigo-700">
               Checkout
-            </a>
+            </Link>
           </div>
           <div className="mt-6 flex justify-center text-center text-sm text-gray-500">
             <p>
               or{" "}
               <button 
                 type="button" 
-                className="font-medium text-indigo-600 hover:text-indigo-500" 
-                onClick={() => setOpen(false)}><Link to='/'>Continue Shopping</Link><span aria-hidden="true"> &rarr;</span>
+                className="font-medium text-indigo-600 hover:text-indigo-500" ><Link to='/'>Continue Shopping</Link><span aria-hidden="true"> &rarr;</span>
               </button>
             </p>
           </div>
