@@ -5,9 +5,7 @@ import ProductList from '../features/product-list/ProductList'
 const HomePage = () => {
   return (
     <div>
-      <Navbar>
         <ProductList></ProductList>
-      </Navbar>
     </div>
   )
 }
