@@ -1,10 +1,16 @@
 import React from 'react'
 import Cart from '../features/cart/Cart'
+import Navbar from "../features/navbar/Navbar"
 
 const CartPage = () => {
   return (
-    <div className='mt-5'>
-      <Cart></Cart>
+    <div>
+      <Navbar></Navbar>
+
+      <div className='mt-5'>
+        <Cart></Cart>
+      </div>
+        
     </div>
   )
 }
