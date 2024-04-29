@@ -2,8 +2,6 @@ import CartPage from "./pages/CartPage";
 import CheckoutPage from "./pages/CheckoutPage";
 import HomePage from "./pages/HomePage"
 import LoginPage from "./pages/LoginPage"
-// import ProductDetailsPage from "./pages/ProductDetailsPage";
-import ProductDetails from "./features/product-list/component/ProductsDetails"
 import SignUpPage from "./pages/SignUpPage"
 import {createBrowserRouter, RouterProvider} from "react-router-dom"; 
 import ProductDetailsPage from "./pages/ProductDetailsPage";
