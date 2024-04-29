@@ -8,14 +8,16 @@ export function fetchAllProducts(){
 
 
 export function fetchProductsByFilters(filter){
-    const queryString = '';
+    let queryString = '';
     for(let key in filter){
-        queryString += `${key}=${filter[key]}&`
+        const categoryValues = filter[key];
+        if (categoryValues.length) {
+            queryString += `${key}/${categoryValues}`
+        }
     }
 
-
     return new Promise(async (resolve)=>{
-        const response = await fetch(`https://dummyjson.com/products?${filter}`);
+        const response = await fetch(`https://dummyjson.com/products/${queryString}`);
         const data = await response.json();
         resolve(data);
     })
