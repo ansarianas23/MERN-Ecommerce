@@ -10,15 +10,16 @@ export const fetchAllProductAsync = createAsyncThunk(
     'product/fetchAllProducts',
     async ()=>{
         const response  = await fetchAllProducts();
-        return response.products;
+        return response;
     }
 )
 
 export const fetchProductsByFiltersAsync = createAsyncThunk(
     'product/fetchProductsByFilters',
-    async ({filter, sort})=>{
-        const response  = await fetchProductsByFilters(filter, sort);
-        return response.products;
+    async ({filter, sort, pagination})=>{
+        // console.log('from slice', sort);
+        const response  = await fetchProductsByFilters(filter, sort, pagination);
+        return response;
     }
 )
 

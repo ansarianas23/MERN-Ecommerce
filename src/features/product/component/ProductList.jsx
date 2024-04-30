@@ -8,6 +8,7 @@ import Product from "../component/Product";
 import { Link } from "react-router-dom";
 import {fetchAllProductAsync, fetchProductsByFiltersAsync, selectAllProducts} from "../ProductSlice";
 import { sortOptions, filters } from "../../../utils/utility";
+import { ITEMS_PER_PAGE } from "../../../utils/constants";
 
 function classNames(...classes) {
   return classes.filter(Boolean).join(" ");
@@ -19,8 +20,10 @@ const ProductList = () => {
   const [mobileFiltersOpen, setMobileFiltersOpen] = useState(false);
   const [filter, setFilter] = useState({});
   const [sort, setSort] = useState({});
+  const [page, setPage] = useState(1);
 
   const products = useSelector(selectAllProducts);
+  const totalItems = 100;
 
   const handleFilter = (e, section, option) => {
     const newFilter = { ...filter };
@@ -40,14 +43,25 @@ const ProductList = () => {
     setFilter(newFilter);
   };
 
-  const handleSort = (e, option) => {
-    const sort = {_sort: option.sort, _order: option.order };
-    setSort(sort);
+  const handleSort = (e ,option) => {
+    const sortObj = {_sort:option.sort, _order:option.order};
+    // console.log('options are', option);
+    // console.log('sort', sort);
+    setSort(sortObj);
   };
 
+  const handlePgination = (pageNo)=>{
+    setPage(pageNo);
+  }
+
   useEffect(() => {
-    dispatch(fetchProductsByFiltersAsync({filter, sort}));
-  }, [dispatch, filter]);
+    const pagination = {_page:page, _limit:ITEMS_PER_PAGE}
+    dispatch(fetchProductsByFiltersAsync({filter, sort, pagination}));
+  }, [dispatch, filter,sort, page]);
+
+  useEffect(() => {
+    setPage(1);
+  }, [totalItems, sort]);
 
   return (
     <>
@@ -87,21 +101,14 @@ const ProductList = () => {
                     leaveFrom="transform opacity-100 scale-100"
                     leaveTo="transform opacity-0 scale-95"
                   >
-                    <Menu.Items className="absolute right-0 z-10 mt-2 w-40 origin-top-right rounded-md bg-white shadow-2xl ring-1 ring-black ring-opacity-5 focus:outline-none">
-                      <div className="py-1">
+                    <Menu.Items className="absolute right-0 z-10 mt-2 w-40 origin-top-right rounded-md bg-white shadow-2xl ring-1 ring-black ring-opacity-5 focus:outline-none overflow-hidden">
+                      <div>
                         {sortOptions.map((option) => (
                           <Menu.Item key={option.name}>
                             {({ active }) => (
                               <p
-                                onClick={(e) => handleSort(e, option)}
-                                className={classNames(
-                                  option.current
-                                    ? "font-medium text-gray-900"
-                                    : "text-gray-500",
-                                  active ? "bg-gray-100" : "",
-                                  "block px-4 py-2 text-sm"
-                                )}
-                              >
+                                onClick={(e)=>handleSort(e, option)}
+                                className="cursor-pointer px-4 py-2 text-sm hover:bg-gray-100">
                                 {option.name}
                               </p>
                             )}
@@ -145,7 +152,7 @@ const ProductList = () => {
             </section>
 
             {/* Pagination component */}
-            <Pagination></Pagination>
+            <Pagination handlePgination={handlePgination} totalItems={totalItems} page={page} setPage={setPage}></Pagination>
           </main>
         </div>
       </div>
@@ -173,7 +180,8 @@ const ProductGrid = ({ products }) => {
   );
 };
 
-const Pagination = () => {
+const Pagination = ({ handlePgination, page, setPage, totalItems }) => {
+
   return (
     <div className="flex items-center justify-between border-t border-gray-200 bg-white px-4 py-3 sm:px-6">
       <div className="flex flex-1 justify-between sm:hidden">
@@ -193,9 +201,9 @@ const Pagination = () => {
       <div className="hidden sm:flex sm:flex-1 sm:items-center sm:justify-between">
         <div>
           <p className="text-sm text-gray-700">
-            Showing <span className="font-medium">1</span> to{" "}
-            <span className="font-medium">10</span> of{" "}
-            <span className="font-medium">97</span> results
+            Showing <span className="font-medium">{(page-1)*ITEMS_PER_PAGE+1}</span> to{" "}
+            <span className="font-medium">{page *ITEMS_PER_PAGE > totalItems? totalItems : page*ITEMS_PER_PAGE >totalItems}</span> of{" "}
+            <span className="font-medium">{totalItems}</span> results
           </p>
         </div>
         <div>
@@ -203,58 +211,23 @@ const Pagination = () => {
             className="isolate inline-flex -space-x-px rounded-md shadow-sm"
             aria-label="Pagination"
           >
-            <span
-              href="#"
-              className="relative inline-flex items-center rounded-l-md px-2 py-2 text-gray-400 ring-1 ring-i ring-gray-300 hover:bg-gray-50 focus:z-20 focus:outline-offset-0"
-            >
+            <span className="relative inline-flex items-center rounded-l-md px-2 py-2 text-gray-400 ring-1 ring-i ring-gray-300 hover:bg-gray-50 focus:z-20 focus:outline-offset-0">
               <span className="sr-only">Previous</span>
               <ChevronLeftIcon className="h-5 w-5" aria-hidden="true" />
             </span>
-            {/* Current: "z-10 bg-indigo-600 text-white focus-visible:outline focus-visible:outli focus-visible:outline-offset-2 focus-visible:outline-indigo-600", Default: "text-gray-900 ring-1 ring-i  ring-gray-300 hover:bg-gray-50 focus:outline-offset-0" */}
-            <span
-              href="#"
-              aria-current="page"
-              className="relative z-10 inline-flex items-center bg-indigo-600 px-4 py-2 text-sm font-semibold text-w  focus:z-20 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offs focus-visible:outline-indigo-600"
-            >
-              1
-            </span>
-            <span
-              href="#"
-              className="relative inline-flex items-center px-4 py-2 text-sm font-semibold text-gray-900 ri ring-inset ring-gray-300 hover:bg-gray-50 focus:z-20 focus:outline-offset-0"
-            >
-              2
-            </span>
-            <span
-              href="#"
-              className="relative hidden items-center px-4 py-2 text-sm font-semibold text-gray-900 ring-1 ring-i ring-gray-300 hover:bg-gray-50 focus:z-20 focus:outline-offset-0 md:inline-flex"
-            >
-              3
-            </span>
-            <span className="relative inline-flex items-center px-4 py-2 text-sm font-semibold text-gray-700 ri ring-inset ring-gray-300 focus:outline-offset-0">
-              ...
-            </span>
-            <span
-              href="#"
-              className="relative hidden items-center px-4 py-2 text-sm font-semibold text-gray-900 ring-1 ring-i ring-gray-300 hover:bg-gray-50 focus:z-20 focus:outline-offset-0 md:inline-flex"
-            >
-              8
-            </span>
-            <span
-              href="#"
-              className="relative inline-flex items-center px-4 py-2 text-sm font-semibold text-gray-900 ri ring-inset ring-gray-300 hover:bg-gray-50 focus:z-20 focus:outline-offset-0"
-            >
-              9
-            </span>
-            <span
-              href="#"
-              className="relative inline-flex items-center px-4 py-2 text-sm font-semibold text-gray-900 ri ring-inset ring-gray-300 hover:bg-gray-50 focus:z-20 focus:outline-offset-0"
-            >
-              10
-            </span>
-            <span
-              href="#"
-              className="relative inline-flex items-center rounded-r-md px-2 py-2 text-gray-400 ring-1 ring-i ring-gray-300 hover:bg-gray-50 focus:z-20 focus:outline-offset-0"
-            >
+
+            {/* Dynamic pages here */}
+            {
+              Array.from({length:Math.ceil(totalItems/ITEMS_PER_PAGE)}).map((elem, index)=>(
+                <span key={index} aria-current="page"
+                onClick={(e)=>handlePgination(index+1)}
+                 className={`cursor-pointer relative z-10 inline-flex items-center ${index+1 === page? 'bg-indigo-600 text-white hover:bg-indigo-700': 'bg-white text-black hover:bg-gray-50'} px-4 py-2 text-sm font-semibold text-w  focus:z-20 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offs focus-visible:outline-indigo-600 ring-1 ring-i ring-gray-300`}>
+                    {index+1}
+                </span>
+              ))
+            }
+            
+            <span className="relative inline-flex items-center rounded-r-md px-2 py-2 text-gray-400 ring-1 ring-i ring-gray-300 hover:bg-gray-50 focus:z-20 focus:outline-offset-0">
               <span className="sr-only">Next</span>
               <ChevronRightIcon className="h-5 w-5" aria-hidden="true" />
             </span>

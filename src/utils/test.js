@@ -1845,9 +1845,23 @@ const products = [
 // Convert Sets to Arrays
 const uniqueCategories = new Set(products.map(product => product.category));
 const categoryNames = Array.from(uniqueCategories);
-console.log(categoryNames);
+// console.log(categoryNames);
 
 
 // const uniqueBrands = [...new Set([...products.map(product => product.brand)])];
 // const brandNames = uniqueBrands.map(c=>({value:c, label:c.split('-').join(' '), checked: false}));
 // console.log(brandNames);
+
+
+const sort = {_sort: 'price', _order: 'desc'}
+// Sort
+let queryString = ""
+for (let key in sort) {
+    queryString += `${key}=${sort[key]}&`;
+    // console.log(`${key}=${sort[key]}&`);
+}
+
+
+
+// command to run script
+// node .\src\utils\test.js
