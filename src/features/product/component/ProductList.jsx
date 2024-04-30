@@ -3,22 +3,10 @@ import { useState, Fragment } from "react";
 import { useSelector, useDispatch } from "react-redux";
 import { Dialog, Disclosure, Menu, Transition } from "@headlessui/react";
 import { XMarkIcon } from "@heroicons/react/24/outline";
-import {
-  ChevronDownIcon,
-  FunnelIcon,
-  MinusIcon,
-  PlusIcon,
-  Squares2X2Icon,
-  ChevronLeftIcon,
-  ChevronRightIcon,
-} from "@heroicons/react/20/solid";
+import {ChevronDownIcon, FunnelIcon, MinusIcon, PlusIcon, Squares2X2Icon, ChevronLeftIcon, ChevronRightIcon} from "@heroicons/react/20/solid";
 import Product from "../component/Product";
 import { Link } from "react-router-dom";
-import {
-  fetchAllProductAsync,
-  fetchProductsByFiltersAsync,
-  selectAllProducts,
-} from "../ProductSlice";
+import {fetchAllProductAsync, fetchProductsByFiltersAsync, selectAllProducts} from "../ProductSlice";
 import { sortOptions, filters } from "../../../utils/utility";
 
 function classNames(...classes) {
@@ -26,9 +14,11 @@ function classNames(...classes) {
 }
 
 const ProductList = () => {
+
   const dispatch = useDispatch();
   const [mobileFiltersOpen, setMobileFiltersOpen] = useState(false);
   const [filter, setFilter] = useState({});
+  const [sort, setSort] = useState({});
 
   const products = useSelector(selectAllProducts);
 
@@ -36,29 +26,34 @@ const ProductList = () => {
     const newFilter = { ...filter };
     // TODO: on server it will support multiple categories
     if (e.target.checked) {
-      newFilter[section.id] = option.value;
+      if(newFilter[section.id]){
+        newFilter[section.id].push(option.value);
+      }else{
+        newFilter[section.id] = [option.value]
+      }
     } else {
-      delete newFilter[section.id];
+      // deleting element from array
+        const index = newFilter[section.id].findIndex(el=>el === option.value)
+        newFilter[section.id].splice(index, 1)
     }
 
     setFilter(newFilter);
   };
 
   const handleSort = (e, option) => {
-    const newFilter = { ...filter, _sort: option.sort, _order: option.order };
-    setFilter(newFilter);
-    dispatch(fetchProductsByFiltersAsync(newFilter));
+    const sort = {_sort: option.sort, _order: option.order };
+    setSort(sort);
   };
 
   useEffect(() => {
-    dispatch(fetchProductsByFiltersAsync(filter));
+    dispatch(fetchProductsByFiltersAsync({filter, sort}));
   }, [dispatch, filter]);
 
   return (
     <>
       <div className="bg-white">
         <div>
-          {/* Mobile filter dialog */}
+          {/* Mobile filter dialog Component */}
           <MobileFilter
             mobileFiltersOpen={mobileFiltersOpen}
             setMobileFiltersOpen={setMobileFiltersOpen}
@@ -141,7 +136,7 @@ const ProductList = () => {
               </h2>
 
               <div className="grid grid-cols-1 gap-x-8 gap-y-10 lg:grid-cols-4">
-                {/* Filters for laptop, desktop tab view etc*/}
+                {/* Desktop filter dialog Component */}
                 <DesktopFilter handleFilter={handleFilter}></DesktopFilter>
 
                 {/* Product grid Component */}
@@ -392,11 +387,7 @@ const DesktopFilter = ({ handleFilter }) => {
       <h3 className="sr-only">Categories</h3>
 
       {filters.map((section) => (
-        <Disclosure
-          as="div"
-          key={section.id}
-          className="border-b border-gray-200 py-6"
-        >
+        <Disclosure as="div" key={section.id} className="border-b border-gray-200 py-6">
           {({ open }) => (
             <>
               <h3 className="-my-3 flow-root">
