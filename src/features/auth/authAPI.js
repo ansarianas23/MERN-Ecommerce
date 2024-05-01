@@ -1,6 +1,10 @@
-export function fetchCount(amount=1){
+export function createUser(userData){
     return new Promise(async (resolve)=>{
-        const response = await fetch('http://lcoalhost:8080')
+        const response = await fetch('http://localhost:3000/users',{
+            method: 'POST',
+            body: JSON.stringify(userData),
+            headers: {'content-type': 'application/json'}
+        });
         const data = await response.json()
         resolve(data);
     })

@@ -4,7 +4,7 @@ import SignUp from '../features/auth/components/SignUp'
 
 const SignUpPage = () => {
   return (
-    <div>
+    <div className='py-4'>
       <SignUp></SignUp>
     </div>
   )
