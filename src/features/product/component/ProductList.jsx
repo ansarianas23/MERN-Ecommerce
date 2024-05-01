@@ -6,7 +6,7 @@ import { XMarkIcon } from "@heroicons/react/24/outline";
 import {ChevronDownIcon, FunnelIcon, MinusIcon, PlusIcon, Squares2X2Icon, ChevronLeftIcon, ChevronRightIcon} from "@heroicons/react/20/solid";
 import Product from "../component/Product";
 import { Link } from "react-router-dom";
-import {fetchAllProductAsync, fetchProductsByFiltersAsync, selectAllProducts} from "../ProductSlice";
+import {fetchAllProductCountAsync, fetchProductsByFiltersAsync, selectAllProducts, selectAllProductsTotalItems} from "../ProductSlice";
 import { sortOptions, filters } from "../../../utils/utility";
 import { ITEMS_PER_PAGE } from "../../../utils/constants";
 
@@ -23,7 +23,10 @@ const ProductList = () => {
   const [page, setPage] = useState(1);
 
   const products = useSelector(selectAllProducts);
-  const totalItems = 100;
+  // console.log("selector products obj", products);
+  const totalItems = useSelector(selectAllProductsTotalItems);
+  // console.log("total items 2", totalItems);
+  // const totalItems = 100;
 
   const handleFilter = (e, section, option) => {
     const newFilter = { ...filter };
@@ -57,6 +60,7 @@ const ProductList = () => {
   useEffect(() => {
     const pagination = {_page:page, _limit:ITEMS_PER_PAGE}
     dispatch(fetchProductsByFiltersAsync({filter, sort, pagination}));
+    dispatch(fetchAllProductCountAsync());
   }, [dispatch, filter,sort, page]);
 
   useEffect(() => {
@@ -202,7 +206,7 @@ const Pagination = ({ handlePgination, page, setPage, totalItems }) => {
         <div>
           <p className="text-sm text-gray-700">
             Showing <span className="font-medium">{(page-1)*ITEMS_PER_PAGE+1}</span> to{" "}
-            <span className="font-medium">{page *ITEMS_PER_PAGE > totalItems? totalItems : page*ITEMS_PER_PAGE >totalItems}</span> of{" "}
+            <span className="font-medium">{page *ITEMS_PER_PAGE > totalItems? totalItems : page*ITEMS_PER_PAGE}</span> of{" "}
             <span className="font-medium">{totalItems}</span> results
           </p>
         </div>

@@ -1865,3 +1865,6 @@ for (let key in sort) {
 
 // command to run script
 // node .\src\utils\test.js
+
+// json server script
+// npx json-server .\data.json

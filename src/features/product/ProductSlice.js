@@ -1,15 +1,16 @@
 import { createAsyncThunk, createSlice } from "@reduxjs/toolkit"
-import { fetchAllProducts, fetchProductsByFilters } from "./ProductAPI";
+import { fetchAllProductsCount, fetchProductsByFilters } from "./ProductAPI";
 
 const initialState = {
     products: [],
-    status: 'idle'
+    status: 'idle',
+    totalItems: 0
 }
 
-export const fetchAllProductAsync = createAsyncThunk(
-    'product/fetchAllProducts',
+export const fetchAllProductCountAsync = createAsyncThunk(
+    'product/fetchAllProductsCount',
     async ()=>{
-        const response  = await fetchAllProducts();
+        const response  = await fetchAllProductsCount();
         return response;
     }
 )
@@ -34,12 +35,12 @@ export const productSlice = createSlice({
     },
     extraReducers:(builder)=>{
         builder
-        .addCase(fetchAllProductAsync.pending, (state)=>{
+        .addCase(fetchAllProductCountAsync.pending, (state)=>{
             state.status = 'loading'
         })
-        .addCase(fetchAllProductAsync.fulfilled, (state, action)=>{
+        .addCase(fetchAllProductCountAsync.fulfilled, (state, action)=>{
             state.status = 'idle'
-            state.products = action.payload;
+            state.totalItems = action.payload;
         })
         .addCase(fetchProductsByFiltersAsync.pending, (state)=>{
             state.status = 'loading'
@@ -58,5 +59,6 @@ export const productSlice = createSlice({
 export const { incremenet } = productSlice.actions;
 
 export const selectAllProducts = (state)=> state.product.products;
+export const selectAllProductsTotalItems = (state)=> state.product.totalItems;
 
 export default productSlice.reducer;
