@@ -6,8 +6,8 @@ import { XMarkIcon } from "@heroicons/react/24/outline";
 import {ChevronDownIcon, FunnelIcon, MinusIcon, PlusIcon, Squares2X2Icon, ChevronLeftIcon, ChevronRightIcon} from "@heroicons/react/20/solid";
 import Product from "../component/Product";
 import { Link } from "react-router-dom";
-import {fetchAllProductCountAsync, fetchProductsByFiltersAsync, selectAllProducts, selectAllProductsTotalItems} from "../ProductSlice";
-import { sortOptions, filters } from "../../../utils/utility";
+import {fetchAllProductCountAsync, fetchBrandsAsync, fetchCategoriesAsync, fetchProductsByFiltersAsync, selectAllBrands, selectAllCategories, selectAllProducts, selectAllProductsTotalItems} from "../ProductSlice";
+import { sortOptions } from "../../../utils/utility";
 import { ITEMS_PER_PAGE } from "../../../utils/constants";
 
 function classNames(...classes) {
@@ -23,10 +23,23 @@ const ProductList = () => {
   const [page, setPage] = useState(1);
 
   const products = useSelector(selectAllProducts);
-  // console.log("selector products obj", products);
   const totalItems = useSelector(selectAllProductsTotalItems);
-  // console.log("total items 2", totalItems);
+  const brands = useSelector(selectAllBrands);
+  const categories = useSelector(selectAllCategories);
   // const totalItems = 100;
+
+  const filters = [
+    {
+      id: "category",
+      name: "Category",
+      options: brands?.data
+    },
+    {
+      id: "brand",
+      name: "Brands",
+      options: categories?.data,
+    },
+  ];
 
   const handleFilter = (e, section, option) => {
     const newFilter = { ...filter };
@@ -67,6 +80,11 @@ const ProductList = () => {
     setPage(1);
   }, [totalItems, sort]);
 
+  useEffect(()=>{
+    dispatch(fetchBrandsAsync());
+    dispatch(fetchCategoriesAsync());
+  },[])
+
   return (
     <>
       <div className="bg-white">
@@ -76,6 +94,7 @@ const ProductList = () => {
             mobileFiltersOpen={mobileFiltersOpen}
             setMobileFiltersOpen={setMobileFiltersOpen}
             handleFilter={handleFilter}
+            filters={filters}
           ></MobileFilter>
 
           <main className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
@@ -148,10 +167,10 @@ const ProductList = () => {
 
               <div className="grid grid-cols-1 gap-x-8 gap-y-10 lg:grid-cols-4">
                 {/* Desktop filter dialog Component */}
-                <DesktopFilter handleFilter={handleFilter}></DesktopFilter>
+                <DesktopFilter filters={filters} handleFilter={handleFilter}></DesktopFilter>
 
                 {/* Product grid Component */}
-                <ProductGrid products={products}></ProductGrid>
+                <ProductGrid filters={filters} products={products}></ProductGrid>
               </div>
             </section>
 
@@ -172,7 +191,7 @@ const ProductGrid = ({ products }) => {
       <div className="bg-white">
         <div className="mx-auto max-w-2xl px-4 py-0 sm:px-6 sm:py-0 lg:max-w-7xl lg:px-8">
           <div className="mt-6 grid grid-cols-1 gap-x-6 gap-y-10 sm:grid-cols-2 lg:grid-cols-3 xl:gap-x-8">
-            {products?.map((product) => (
+            {products?.data?.map((product) => (
               <Link to={`/product-details/${product?.id}`} key={product?.id}>
                 <Product data={product} />
               </Link>
@@ -236,7 +255,7 @@ const Pagination = ({ handlePgination, page, setPage, totalItems }) => {
   );
 };
 
-const MobileFilter = ({mobileFiltersOpen, setMobileFiltersOpen, handleFilter}) => {
+const MobileFilter = ({mobileFiltersOpen, setMobileFiltersOpen, handleFilter, filters}) => {
   return (
     <Transition.Root show={mobileFiltersOpen} as={Fragment}>
       <Dialog
@@ -283,7 +302,7 @@ const MobileFilter = ({mobileFiltersOpen, setMobileFiltersOpen, handleFilter}) =
               <form className="mt-4 border-t border-gray-200">
                 <h3 className="sr-only">Categories</h3>
 
-                {filters.map((section) => (
+                {filters?.map((section) => (
                   <Disclosure
                     as="div"
                     key={section.id}
@@ -313,7 +332,7 @@ const MobileFilter = ({mobileFiltersOpen, setMobileFiltersOpen, handleFilter}) =
                         </h3>
                         <Disclosure.Panel className="pt-6">
                           <div className="space-y-6">
-                            {section.options.map((option, optionIdx) => (
+                            {section?.options?.map((option, optionIdx) => (
                               <div
                                 key={option.value}
                                 className="flex items-center"
@@ -352,12 +371,12 @@ const MobileFilter = ({mobileFiltersOpen, setMobileFiltersOpen, handleFilter}) =
   );
 };
 
-const DesktopFilter = ({ handleFilter }) => {
+const DesktopFilter = ({ handleFilter, filters }) => {
   return (
     <form className="hidden lg:block">
       <h3 className="sr-only">Categories</h3>
 
-      {filters.map((section) => (
+      {filters?.map((section) => (
         <Disclosure as="div" key={section.id} className="border-b border-gray-200 py-6">
           {({ open }) => (
             <>
@@ -377,7 +396,7 @@ const DesktopFilter = ({ handleFilter }) => {
               </h3>
               <Disclosure.Panel className="pt-6">
                 <div className="space-y-4">
-                  {section.options.map((option, optionIdx) => (
+                  {section?.options?.map((option, optionIdx) => (
                     <div key={option.value} className="flex items-center">
                       <input
                         id={`filter-${section.id}-${optionIdx}`}

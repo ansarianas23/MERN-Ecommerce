@@ -1,8 +1,10 @@
 import { createAsyncThunk, createSlice } from "@reduxjs/toolkit"
-import { fetchAllProductsCount, fetchProductsByFilters } from "./ProductAPI";
+import { fetchAllProductsCount, fetchBrands, fetchCategories, fetchProductsByFilters } from "./ProductAPI";
 
 const initialState = {
     products: [],
+    brands: [],
+    categories: [],
     status: 'idle',
     totalItems: 0
 }
@@ -20,6 +22,22 @@ export const fetchProductsByFiltersAsync = createAsyncThunk(
     async ({filter, sort, pagination})=>{
         // console.log('from slice', sort);
         const response  = await fetchProductsByFilters(filter, sort, pagination);
+        return response;
+    }
+)
+
+export const fetchBrandsAsync = createAsyncThunk(
+    'product/fetchBrands',
+    async ()=>{
+        const response  = await fetchBrands();
+        return response;
+    }
+)
+
+export const fetchCategoriesAsync = createAsyncThunk(
+    'product/fetchCategories',
+    async ()=>{
+        const response  = await fetchCategories();
         return response;
     }
 )
@@ -49,6 +67,20 @@ export const productSlice = createSlice({
             state.status = 'idle'
             state.products = action.payload;
         })
+        .addCase(fetchBrandsAsync.pending, (state)=>{
+            state.status = 'loading'
+        })
+        .addCase(fetchBrandsAsync.fulfilled, (state, action)=>{
+            state.status = 'idle'
+            state.brands = action.payload;
+        })
+        .addCase(fetchCategoriesAsync.pending, (state)=>{
+            state.status = 'loading'
+        })
+        .addCase(fetchCategoriesAsync.fulfilled, (state, action)=>{
+            state.status = 'idle'
+            state.categories = action.payload;
+        })
 
         
     }
@@ -59,6 +91,8 @@ export const productSlice = createSlice({
 export const { incremenet } = productSlice.actions;
 
 export const selectAllProducts = (state)=> state.product.products;
+export const selectAllBrands = (state)=> state.product.brands;
+export const selectAllCategories = (state)=> state.product.categories;
 export const selectAllProductsTotalItems = (state)=> state.product.totalItems;
 
 export default productSlice.reducer;

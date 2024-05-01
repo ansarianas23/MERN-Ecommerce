@@ -39,6 +39,24 @@ export function fetchProductsByFilters(filter, sort, pagination){
     return new Promise(async (resolve)=>{
         const response = await fetch(`http://localhost:3000/products?${queryString}`);
         const data = await response.json();
-        resolve(data);
+        resolve({data});
+    })
+}
+
+
+export function fetchBrands(){
+    return new Promise(async (resolve)=>{
+        const response = await fetch('http://localhost:3000/brands');
+        const data = await response.json();
+        resolve({data});
+    })
+}
+
+
+export function fetchCategories(){
+    return new Promise(async (resolve)=>{
+        const response = await fetch('http://localhost:3000/categories');
+        const data = await response.json();
+        resolve({data});
     })
 }
