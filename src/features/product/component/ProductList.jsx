@@ -189,18 +189,12 @@ const Pagination = ({ handlePgination, page, setPage, totalItems }) => {
   return (
     <div className="flex items-center justify-between border-t border-gray-200 bg-white px-4 py-3 sm:px-6">
       <div className="flex flex-1 justify-between sm:hidden">
-        <span
-          href="#"
-          className="relative inline-flex items-center rounded-md border border-gray-300 bg-white px-4 py-2 tex font-medium text-gray-700 hover:bg-gray-50"
-        >
+        <button disabled={page===1? true : false} onClick={()=>setPage(page-1)} className="cursor-pointer relative inline-flex items-center rounded-md border border-gray-300 bg-white px-4 py-2 tex font-medium text-gray-700 hover:bg-gray-50">
           Previous
-        </span>
-        <span
-          href="#"
-          className="relative ml-3 inline-flex items-center rounded-md border border-gray-300 bg-white px-4 py-2 tex  font-medium text-gray-700 hover:bg-gray-50"
-        >
+        </button>
+        <button disabled={page===(totalItems/ITEMS_PER_PAGE).length? true : false} onClick={()=>setPage(page+1)} className="cursor-pointer relative ml-3 inline-flex items-center rounded-md border border-gray-300 bg-white px-4 py-2 tex  font-medium text-gray-700 hover:bg-gray-50">
           Next
-        </span>
+        </button>
       </div>
       <div className="hidden sm:flex sm:flex-1 sm:items-center sm:justify-between">
         <div>
@@ -215,10 +209,10 @@ const Pagination = ({ handlePgination, page, setPage, totalItems }) => {
             className="isolate inline-flex -space-x-px rounded-md shadow-sm"
             aria-label="Pagination"
           >
-            <span className="relative inline-flex items-center rounded-l-md px-2 py-2 text-gray-400 ring-1 ring-i ring-gray-300 hover:bg-gray-50 focus:z-20 focus:outline-offset-0">
+            <button disabled={page===1? true : false} onClick={()=>setPage(page-1)} className="relative inline-flex items-center rounded-l-md px-2 py-2 text-gray-400 ring-1 ring-i ring-gray-300 hover:bg-gray-50 focus:z-20 focus:outline-offset-0">
               <span className="sr-only">Previous</span>
               <ChevronLeftIcon className="h-5 w-5" aria-hidden="true" />
-            </span>
+            </button>
 
             {/* Dynamic pages here */}
             {
@@ -231,10 +225,10 @@ const Pagination = ({ handlePgination, page, setPage, totalItems }) => {
               ))
             }
             
-            <span className="relative inline-flex items-center rounded-r-md px-2 py-2 text-gray-400 ring-1 ring-i ring-gray-300 hover:bg-gray-50 focus:z-20 focus:outline-offset-0">
+            <button disabled={page===totalItems/ITEMS_PER_PAGE ? true : false} onClick={()=>setPage(page+1)} className="relative inline-flex items-center rounded-r-md px-2 py-2 text-gray-400 ring-1 ring-i ring-gray-300 hover:bg-gray-50 focus:z-20 focus:outline-offset-0">
               <span className="sr-only">Next</span>
               <ChevronRightIcon className="h-5 w-5" aria-hidden="true" />
-            </span>
+            </button>
           </nav>
         </div>
       </div>
