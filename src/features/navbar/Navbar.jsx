@@ -3,6 +3,9 @@ import { Disclosure, Menu, Transition } from '@headlessui/react'
 import { Bars3Icon, ShoppingCartIcon, XMarkIcon } from '@heroicons/react/24/outline'
 import { Link } from 'react-router-dom'
 import ecommerceLogo from '../../assets/ecommerce-logo.png'
+import { useSelector } from 'react-redux'
+import { selectedCartItems } from '../cart/CartSlice'
+import { selectLoggedInUser } from '../auth/authSlice'
 
 const user = {
   name: 'Tom Cook',
@@ -27,6 +30,10 @@ function classNames(...classes) {
 
 
 const Navbar = () => {
+
+  const cart = useSelector(selectedCartItems);
+  const user = useSelector(selectLoggedInUser); 
+
   return (
     <>
       <div className="min-h-full">
@@ -70,7 +77,7 @@ const Navbar = () => {
                         <ShoppingCartIcon className="h-6 w-6" aria-hidden="true" />
                       </button>
                       </Link>
-                      <span className="inline-flex items-center rounded-full mb-7 -ml-2 z-10 bg-gray-50 px-[6px] py-[2px] text-xs font-bold text-gray-600 ring-1 ring-inset ring-gray-500/10">6</span>
+                      {cart?.length>0 && <span className="inline-flex items-center rounded-full mb-7 -ml-2 z-10 bg-gray-50 px-[6px] py-[2px] text-xs font-bold text-gray-600 ring-1 ring-inset ring-gray-500/10">{cart?.length}</span>}
 
                       {/* Profile dropdown */}
                       <Menu as="div" className="relative ml-3">
@@ -78,7 +85,7 @@ const Navbar = () => {
                           <Menu.Button className="relative flex max-w-xs items-center rounded-full bg-gray-800 text-sm focus:outline-none focus:ring-2 focus:ring-white focus:ring-offset-2 focus:ring-offset-gray-800">
                             <span className="absolute -inset-1.5" />
                             <span className="sr-only">Open user menu</span>
-                            <img className="h-8 w-8 rounded-full" src={user.imageUrl} alt="" />
+                            <img className="h-8 w-8 rounded-full" src={user?.imageUrl} alt="" />
                           </Menu.Button>
                         </div>
                         <Transition
@@ -146,11 +153,11 @@ const Navbar = () => {
                 <div className="border-t border-gray-700 pb-3 pt-4">
                   <div className="flex items-center px-5">
                     <div className="flex-shrink-0">
-                      <img className="h-10 w-10 rounded-full" src={user.imageUrl} alt="" />
+                      <img className="h-10 w-10 rounded-full" src={user?.imageUrl} alt="" />
                     </div>
                     <div className="ml-3">
-                      <div className="text-base font-medium leading-none text-white">{user.name}</div>
-                      <div className="text-sm font-medium leading-none text-gray-400">{user.email}</div>
+                      <div className="text-base font-medium leading-none text-white">{user?.name}</div>
+                      <div className="text-sm font-medium leading-none text-gray-400">{user?.email}</div>
                     </div>
                     <Link to='/cart'>
                       <button
@@ -161,7 +168,7 @@ const Navbar = () => {
                         <ShoppingCartIcon className="h-6 w-6" aria-hidden="true" />
                       </button>
                     </Link>
-                    <span className="inline-flex items-center rounded-full mb-7 -ml-2 z-10 bg-gray-50 px-[6px] py-[2px] text-xs font-bold text-gray-600 ring-1 ring-inset ring-gray-500/10">6</span>
+                    {cart?.length>0 && <span className="inline-flex items-center rounded-full mb-7 -ml-2 z-10 bg-gray-50 px-[6px] py-[2px] text-xs font-bold text-gray-600 ring-1 ring-inset ring-gray-500/10">{cart?.length}</span>}
                   </div>
                   <div className="mt-3 space-y-1 px-2">
                     {userNavigation.map((item) => (

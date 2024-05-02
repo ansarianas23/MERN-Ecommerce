@@ -6,6 +6,7 @@ export function fetchAllProductsCount(){
     })
 }
 
+// To fetch a single product by specific id
 export function fetchProductById(id){
     return new Promise(async (resolve)=>{
         const response = await fetch(`http://localhost:3000/products?id=${+id}`);
