@@ -54,11 +54,7 @@ export const fetchCategoriesAsync = createAsyncThunk(
 export const productSlice = createSlice({
     name: 'product',
     initialState,
-    reducers:{
-        incremenet: (state, action)=>{
-            state.value +=1;
-        }
-    },
+    reducers:{},
     extraReducers:(builder)=>{
         builder
         .addCase(fetchAllProductCountAsync.pending, (state)=>{

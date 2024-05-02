@@ -1,5 +1,5 @@
 import React from "react";
-import { Link } from "react-router-dom";
+import { Link, Navigate } from "react-router-dom";
 import { useForm } from "react-hook-form"
 import { selectLoggedInUser, createUserAsync } from "../authSlice";
 import { useDispatch, useSelector } from "react-redux";
@@ -10,21 +10,12 @@ const SignUp = () => {
   const dispatch = useDispatch();
 
   const user = useSelector(selectLoggedInUser);
-  
   // console.log("user from component is", user);
 
 
   return (
     <>
-    {user?.email}
-      {/*
-        This example requires updating your template:
-
-        ```
-        <html class="h-full bg-white">
-        <body class="h-full">
-        ```
-      */}
+    {user && <Navigate to="/" replace={true}></Navigate>} 
       <div className="mx-auto max-w-96 flex min-h-full flex-1 flex-col justify-center px-6 py-12 lg:px-8 bg-white rounded-md">
         <div className="sm:mx-auto sm:w-full sm:max-w-sm">
           <Link to='/'><img className="mx-auto h-10 w-auto" src="https://tailwindui.com/img/logos/mark.svg?color=indigo&shade=600" alt="Your Company"/></Link>
