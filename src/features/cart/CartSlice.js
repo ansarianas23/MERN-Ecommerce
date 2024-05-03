@@ -62,6 +62,14 @@ export const counterSlice = createSlice({
             state.status = 'idle'
             state.cartItems = action.payload;
         })  
+        .addCase(updateCartAsync.pending, (state)=>{
+            state.status = 'loading'
+        })
+        .addCase(updateCartAsync.fulfilled, (state, action)=>{
+            state.status = 'idle';
+            const index =  state.cartItems.findIndex(item=>item.id===action.payload.id)
+            state.cartItems[index] = action.payload;
+        })  
         .addCase(deleteItemFromCartAsync.pending, (state)=>{
             state.status = 'loading'
         })

@@ -2130,7 +2130,7 @@
         "https://cdn.dummyjson.com/product-images/9/4.jpg",
         "https://cdn.dummyjson.com/product-images/9/thumbnail.jpg"
       ],
-      "qty": 2,
+      "qty": 3,
       "user": 4,
       "itemUrl": "http://localhost:5173/product-details/9"
     }
