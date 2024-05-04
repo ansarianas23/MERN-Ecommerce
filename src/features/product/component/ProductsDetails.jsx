@@ -47,16 +47,21 @@ const ProductDetails = () => {
     const { id } = useParams();
     const user = useSelector(selectLoggedInUser);
 
+    // const[{email, password, addresses}] = user;
+    // const userObj = {email, password, addresses}
+    // console.log("userObj", userObj);
+
     let fullUrl = window.location.href;
 
     const handleCart = (e)=>{
       e.preventDefault();
-      dispatch(addToCartAsync({...product, qty:1, user:user[0].id, itemUrl: fullUrl}));
+      const newItem = {...product, qty:1, user:user[0]?.id, itemUrl: fullUrl}
+      delete newItem['id'];
+      dispatch(addToCartAsync(newItem));
     }
 
     useEffect(()=>{
       dispatch(fetchProductByIdAsync(id));
-      console.log(window.location.href);
     },[dispatch, id]);
 
   return (

@@ -64,7 +64,7 @@ function App() {
   // loading user cart
   useEffect(()=>{
     if(user){
-      dispatch(fetchItemsByUserIdAsync(user[0].id));
+      dispatch(fetchItemsByUserIdAsync(user[0]?.id));
     }
   },[dispatch, user]);
 

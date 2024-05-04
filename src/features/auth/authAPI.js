@@ -20,13 +20,26 @@ export function loginUser(loginInfo){
         const data = await response.json();
 
         if(data.length){
-            if(password == data[0].password){
+            if(password == data[0]?.password){
                 resolve(data);
+                // console.log("data from login api", data);
             }else{
                 reject({message: "Wrong Credentials"});
             }
         }else{
             reject({message: "User Not Found"});
         }
+    })
+}
+
+export function updateUser(update){
+    return new Promise(async (resolve)=>{
+        const response = await fetch('http://localhost:3000/users/'+update.id,{
+            method: 'PATCH',
+            body: JSON.stringify(update),
+            headers: {'content-type': 'application/json'}
+        });
+        const data = await response.json()
+        resolve(data);
     })
 }

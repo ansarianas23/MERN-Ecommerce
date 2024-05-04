@@ -1,13 +1,11 @@
 import { React, useState } from "react";
-import { Link } from "react-router-dom";
+import { Link, Navigate } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 import { deleteItemFromCartAsync, selectedCartItems, updateCartAsync } from "./CartSlice";
 import { selectLoggedInUser } from "../auth/authSlice";
 
 
 const Cart = () => {
-  const [open, setOpen] = useState(true);
-
   const cart = useSelector(selectedCartItems);
   const dispatch = useDispatch();
   const user = useSelector(selectLoggedInUser);
@@ -31,6 +29,7 @@ const Cart = () => {
 
   return (
     <>
+    {!cart.length && <Navigate to='/' replace={true}></Navigate>}
       <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 bg-white rounded-lg">
         <h2 className="text-lg md:text-3xl font-semibold py-3 border-b">Cart - ({cart?.length} items)</h2>
 
