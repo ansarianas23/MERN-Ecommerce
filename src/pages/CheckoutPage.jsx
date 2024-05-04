@@ -15,8 +15,7 @@ const Checkout = () => {
   const cart = useSelector(selectedCartItems);
   const user = useSelector(selectLoggedInUser);
   let userObj = user[0];
-  const currentOrder = useSelector(selectCurrentOrder);
-  
+  const currentOrder = useSelector(selectCurrentOrder);  
 
   const cartTotalAmount = cart?.reduce((total, item)=>{
     return total + item.price * item.qty;
@@ -35,6 +34,7 @@ const Checkout = () => {
   }
 
   const handleAddress = (e)=>{
+    e.preventDefault();
     setSelectedAddress(userObj.addresses[e.target.value]);
   }
 
@@ -65,7 +65,7 @@ const Checkout = () => {
         <div className="grid grid-cols-1 gap-x-8 gap-y-10 lg:grid-cols-5">
           {/* Form start here */}
           <div className="lg:col-span-3 p-3 rounded-lg bg-white">
-            <form noValidate onSubmit={handleSubmit((data)=>{
+            <form  noValidate onSubmit={handleSubmit((data)=>{
               dispatch(
                 updateUserAsync({...userObj, addresses: [...userObj.addresses, data]})
               );
@@ -186,7 +186,7 @@ const Checkout = () => {
                     <button type="submit" className="rounded-md bg-indigo-600 px-3 py-2 text-sm font-semibold text-white shadow-sm hover:bg-indigo-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600">
                       Save
                     </button>
-                </div>
+                  </div>
 
                 </div>
 

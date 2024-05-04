@@ -2083,47 +2083,103 @@
     {
       "email": "dummy@gmail.com",
       "password": "@Dummy123",
-      "addresses": [
-        {
-          "name": "Dummy",
-          "email": "dummy@gmail.com",
-          "phone": "9876453210",
-          "street": "MadhavPura",
-          "city": "moon crater",
-          "state": "Maharashtra",
-          "pinCode": "424001"
-        }
-      ],
+      "addresses": [],
       "id": 1
     },
     {
       "email": "hasin@gmail.com",
       "password": "@Hasin123",
-      "addresses": [],
+      "addresses": [
+        {
+          "name": "Hasin",
+          "email": "hasin@gmail.com",
+          "phone": "9876453210",
+          "street": "xyz lane no4 moon ",
+          "city": "Dhule",
+          "state": "Maharashtra",
+          "pinCode": "424001"
+        }
+      ],
       "id": 2
     }
   ],
   "cart": [
     {
-      "title": "iPhone X",
-      "description": "SIM-Free, Model A19211 6.5-inch Super Retina HD display with OLED technology A12 Bionic chip with ...",
-      "price": 899,
-      "discountPercentage": 17.94,
-      "rating": 4.44,
-      "stock": 34,
-      "brand": "Apple",
-      "category": "smartphones",
-      "thumbnail": "https://cdn.dummyjson.com/product-images/2/thumbnail.jpg",
+      "title": "Infinix INBOOK",
+      "description": "Infinix Inbook X1 Ci3 10th 8GB 256GB 14 Win10 Grey – 1 Year Warranty",
+      "price": 1099,
+      "discountPercentage": 11.83,
+      "rating": 4.54,
+      "stock": 96,
+      "brand": "Infinix",
+      "category": "laptops",
+      "thumbnail": "https://cdn.dummyjson.com/product-images/9/thumbnail.jpg",
       "images": [
-        "https://cdn.dummyjson.com/product-images/2/1.jpg",
-        "https://cdn.dummyjson.com/product-images/2/2.jpg",
-        "https://cdn.dummyjson.com/product-images/2/3.jpg",
-        "https://cdn.dummyjson.com/product-images/2/thumbnail.jpg"
+        "https://cdn.dummyjson.com/product-images/9/1.jpg",
+        "https://cdn.dummyjson.com/product-images/9/2.png",
+        "https://cdn.dummyjson.com/product-images/9/3.png",
+        "https://cdn.dummyjson.com/product-images/9/4.jpg",
+        "https://cdn.dummyjson.com/product-images/9/thumbnail.jpg"
       ],
       "qty": 1,
       "user": 2,
-      "itemUrl": "http://localhost:5173/product-details/2",
+      "itemUrl": "http://localhost:5173/product-details/9",
       "id": 1
+    },
+    {
+      "title": "Samsung Galaxy Book",
+      "description": "Samsung Galaxy Book S (2020) Laptop With Intel Lakefield Chip, 8GB of RAM Launched",
+      "price": 1499,
+      "discountPercentage": 4.15,
+      "rating": 4.25,
+      "stock": 50,
+      "brand": "Samsung",
+      "category": "laptops",
+      "thumbnail": "https://cdn.dummyjson.com/product-images/7/thumbnail.jpg",
+      "images": [
+        "https://cdn.dummyjson.com/product-images/7/1.jpg",
+        "https://cdn.dummyjson.com/product-images/7/2.jpg",
+        "https://cdn.dummyjson.com/product-images/7/3.jpg",
+        "https://cdn.dummyjson.com/product-images/7/thumbnail.jpg"
+      ],
+      "qty": 1,
+      "itemUrl": "http://localhost:5173/product-details/7",
+      "id": 2
+    },
+    {
+      "title": "Samsung Universe 9",
+      "description": "Samsung's new variant which goes beyond Galaxy to the Universe",
+      "price": 1249,
+      "discountPercentage": 15.46,
+      "rating": 4.09,
+      "stock": 36,
+      "brand": "Samsung",
+      "category": "smartphones",
+      "thumbnail": "https://cdn.dummyjson.com/product-images/3/thumbnail.jpg",
+      "images": [
+        "https://cdn.dummyjson.com/product-images/3/1.jpg"
+      ],
+      "qty": 1,
+      "user": 1,
+      "itemUrl": "http://localhost:5173/product-details/3",
+      "id": 3
+    },
+    {
+      "title": "Samsung Universe 9",
+      "description": "Samsung's new variant which goes beyond Galaxy to the Universe",
+      "price": 1249,
+      "discountPercentage": 15.46,
+      "rating": 4.09,
+      "stock": 36,
+      "brand": "Samsung",
+      "category": "smartphones",
+      "thumbnail": "https://cdn.dummyjson.com/product-images/3/thumbnail.jpg",
+      "images": [
+        "https://cdn.dummyjson.com/product-images/3/1.jpg"
+      ],
+      "qty": 1,
+      "itemUrl": "http://localhost:5173/product-details/3",
+      "id": 4
     }
   ],
   "orders": [
@@ -2271,6 +2327,43 @@
       },
       "status": "pending",
       "id": 3
+    },
+    {
+      "items": [
+        {
+          "title": "iPhone X",
+          "description": "SIM-Free, Model A19211 6.5-inch Super Retina HD display with OLED technology A12 Bionic chip with ...",
+          "price": 899,
+          "discountPercentage": 17.94,
+          "rating": 4.44,
+          "stock": 34,
+          "brand": "Apple",
+          "category": "smartphones",
+          "thumbnail": "https://cdn.dummyjson.com/product-images/2/thumbnail.jpg",
+          "images": [
+            "https://cdn.dummyjson.com/product-images/2/1.jpg",
+            "https://cdn.dummyjson.com/product-images/2/2.jpg",
+            "https://cdn.dummyjson.com/product-images/2/3.jpg",
+            "https://cdn.dummyjson.com/product-images/2/thumbnail.jpg"
+          ],
+          "qty": 1,
+          "user": 2,
+          "itemUrl": "http://localhost:5173/product-details/2",
+          "id": 1
+        }
+      ],
+      "totalAmount": 899,
+      "totalItems": 1,
+      "user": {
+        "email": "hasin@gmail.com",
+        "password": "@Hasin123",
+        "addresses": [],
+        "id": 2
+      },
+      "paymentMethod": "cash",
+      "address": null,
+      "status": "pending",
+      "id": 4
     }
   ]
 }
