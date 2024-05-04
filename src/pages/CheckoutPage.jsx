@@ -1,23 +1,24 @@
-import React from "react";
+import React, { useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { Link, Navigate } from "react-router-dom";
 import { deleteItemFromCartAsync, selectedCartItems, updateCartAsync } from "../features/cart/CartSlice";
 import { useForm } from "react-hook-form";
 import { selectLoggedInUser, updateUserAsync } from "../features/auth/authSlice";
+import { createOrderAsync, selectCurrentOrder } from "../features/order/orderSlice";
 
 const Checkout = () => {
 
-  const { register, handleSubmit, watch, formState: { errors }} = useForm();
+  const { register, handleSubmit, watch, formState: { errors }, reset} = useForm();
+  const [selectedAddress, setSelectedAddress] = useState(null);
+  const [paymentMethod, setPaymentMethod] = useState('cash');
   const dispatch = useDispatch();
   const cart = useSelector(selectedCartItems);
   const user = useSelector(selectLoggedInUser);
-
   let userObj = user[0];
+  const currentOrder = useSelector(selectCurrentOrder);
   
-  // console.log("user from redux",user[0]);
-  // console.log(userObj.addresses);
 
-  const cartTotalValue = cart?.reduce((total, item)=>{
+  const cartTotalAmount = cart?.reduce((total, item)=>{
     return total + item.price * item.qty;
   },0);
 
@@ -33,9 +34,33 @@ const Checkout = () => {
     dispatch(deleteItemFromCartAsync(itemId));
   }
 
+  const handleAddress = (e)=>{
+    setSelectedAddress(userObj.addresses[e.target.value]);
+  }
+
+  const handlePayment = (e)=>{
+    setPaymentMethod(e.target.value);
+  }
+
+  const handleOrder = (e)=>{
+    const order = {
+      items: cart,
+      totalAmount: cartTotalAmount, 
+      totalItems,
+      user:userObj, 
+      paymentMethod, 
+      address: selectedAddress, 
+      status: 'pending' // once product delivered admin can change the status
+    }
+
+    dispatch(createOrderAsync(order));
+  }
+
+
   return (
     <>
     {!cart?.length>0 && <Navigate to='/' replace={true}></Navigate>}
+    {currentOrder && <Navigate to={`/orderSuccess/${currentOrder.id}`} replace={true}></Navigate>}
       <div className="mx-auto max-w-7xl py-4 sm:px-6 lg:px-8">
         <div className="grid grid-cols-1 gap-x-8 gap-y-10 lg:grid-cols-5">
           {/* Form start here */}
@@ -44,6 +69,7 @@ const Checkout = () => {
               dispatch(
                 updateUserAsync({...userObj, addresses: [...userObj.addresses, data]})
               );
+              reset();
               // console.log({...userObj, addresses: [...userObj.addresses, data]});
             })}>
               <div>
@@ -174,10 +200,12 @@ const Checkout = () => {
 
                   {/* Address list starts here */}
                   <ul role="list" className="space-y-3">
-                    {userObj?.addresses?.map((address) => (
-                      <li key={address.email} className="flex justify-between gap-x-6 py-5 border-[1px] px-2 rounded-md border-gray-200 ">
+                    {userObj?.addresses?.map((address, index) => (
+                      <li key={index} className="flex justify-between gap-x-6 py-5 border-[1px] px-2 rounded-md border-gray-200 ">
                         <div className="flex min-w-0 gap-x-4 ">
                           <input
+                            onChange={handleAddress}
+                            value={index}
                             id="address"
                             name="address"
                             type="radio"
@@ -221,29 +249,30 @@ const Checkout = () => {
                       <div className="mt-6 space-y-6">
                         <div className="flex items-center gap-x-3">
                           <input
+                            onChange={handlePayment}
+                            value='cash'
+                            checked={paymentMethod === 'cash'}
                             id="cash"
                             name="payments"
                             type="radio"
                             className="h-4 w-4 border-gray-300 text-indigo-600 focus:ring-indigo-600"
                           />
-                          <label
-                            htmlFor="cash"
-                            className="block text-sm font-medium leading-6 text-gray-900"
-                          >
+                          <label htmlFor="cash" className="block text-sm font-medium leading-6 text-gray-900">
                             Cash
                           </label>
                         </div>
+
                         <div className="flex items-center gap-x-3">
                           <input
+                            onChange={handlePayment}
+                            value='card'
+                            checked={paymentMethod === 'card'}
                             id="card"
                             name="payments"
                             type="radio"
                             className="h-4 w-4 border-gray-300 text-indigo-600 focus:ring-indigo-600"
                           />
-                          <label
-                            htmlFor="card"
-                            className="block text-sm font-medium leading-6 text-gray-900"
-                          >
+                          <label htmlFor="card" className="block text-sm font-medium leading-6 text-gray-900">
                             Card Payment
                           </label>
                         </div>
@@ -317,18 +346,15 @@ const Checkout = () => {
               <div className="border-t border-gray-200 px-4 py-6 sm:px-6">
                 <div className="flex justify-between text-base font-medium text-gray-900">
                   <p>Subtotal</p>
-                  <p>${cartTotalValue}</p>
+                  <p>${cartTotalAmount}</p>
                 </div>
                 <p className="mt-0.5 text-sm text-gray-500">
                   Shipping and taxes calculated at checkout.
                 </p>
                 <div className="mt-6">
-                  <Link
-                    to="/checkout"
-                    className="flex items-center justify-center rounded-md border border-transparent bg-indigo-600 px-6 py-3 text-base font-medium text-white shadow-sm hover:bg-indigo-700"
-                  >
-                    Checkout
-                  </Link>
+                  <div onClick={handleOrder} className="cursor-pointer flex items-center justify-center rounded-md border border-transparent bg-indigo-600 px-6 py-3 text-base font-medium text-white shadow-sm hover:bg-indigo-700">
+                    Order Now
+                  </div>
                 </div>
                 <div className="mt-6 flex justify-center text-center text-sm text-gray-500">
                   <p>

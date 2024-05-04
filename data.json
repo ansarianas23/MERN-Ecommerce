@@ -2081,70 +2081,196 @@
   ],
   "users": [
     {
-      "email": "hasin@gmail.com",
-      "password": "@Hasin123",
+      "email": "dummy@gmail.com",
+      "password": "@Dummy123",
       "addresses": [
         {
-          "name": "Hasin",
-          "email": "hasin@gmail.com",
-          "phone": "9876453210",
-          "street": "xyz lane no4 moon ",
-          "city": "Dhule",
-          "state": "Maharashtra",
-          "pinCode": "424001"
-        },
-        {
-          "name": "Hasin 2",
-          "email": "hasin2@gmail.com",
+          "name": "Dummy",
+          "email": "dummy@gmail.com",
           "phone": "9876453210",
           "street": "MadhavPura",
-          "city": "Dhule",
+          "city": "moon crater",
           "state": "Maharashtra",
           "pinCode": "424001"
         }
       ],
       "id": 1
+    },
+    {
+      "email": "hasin@gmail.com",
+      "password": "@Hasin123",
+      "addresses": [],
+      "id": 2
     }
   ],
   "cart": [
     {
-      "title": "iPhone 9",
-      "description": "An apple mobile which is nothing like apple",
-      "price": 549,
-      "discountPercentage": 12.96,
-      "rating": 4.69,
-      "stock": 94,
+      "title": "iPhone X",
+      "description": "SIM-Free, Model A19211 6.5-inch Super Retina HD display with OLED technology A12 Bionic chip with ...",
+      "price": 899,
+      "discountPercentage": 17.94,
+      "rating": 4.44,
+      "stock": 34,
       "brand": "Apple",
       "category": "smartphones",
-      "thumbnail": "https://cdn.dummyjson.com/product-images/1/thumbnail.jpg",
+      "thumbnail": "https://cdn.dummyjson.com/product-images/2/thumbnail.jpg",
       "images": [
-        "https://cdn.dummyjson.com/product-images/1/1.jpg",
-        "https://cdn.dummyjson.com/product-images/1/2.jpg",
-        "https://cdn.dummyjson.com/product-images/1/3.jpg",
-        "https://cdn.dummyjson.com/product-images/1/4.jpg",
-        "https://cdn.dummyjson.com/product-images/1/thumbnail.jpg"
+        "https://cdn.dummyjson.com/product-images/2/1.jpg",
+        "https://cdn.dummyjson.com/product-images/2/2.jpg",
+        "https://cdn.dummyjson.com/product-images/2/3.jpg",
+        "https://cdn.dummyjson.com/product-images/2/thumbnail.jpg"
       ],
       "qty": 1,
-      "itemUrl": "http://localhost:5173/product-details/1",
+      "user": 2,
+      "itemUrl": "http://localhost:5173/product-details/2",
+      "id": 1
+    }
+  ],
+  "orders": [
+    {
+      "items": [
+        {
+          "title": "iPhone X",
+          "description": "SIM-Free, Model A19211 6.5-inch Super Retina HD display with OLED technology A12 Bionic chip with ...",
+          "price": 899,
+          "discountPercentage": 17.94,
+          "rating": 4.44,
+          "stock": 34,
+          "brand": "Apple",
+          "category": "smartphones",
+          "thumbnail": "https://cdn.dummyjson.com/product-images/2/thumbnail.jpg",
+          "images": [
+            "https://cdn.dummyjson.com/product-images/2/1.jpg",
+            "https://cdn.dummyjson.com/product-images/2/2.jpg",
+            "https://cdn.dummyjson.com/product-images/2/3.jpg",
+            "https://cdn.dummyjson.com/product-images/2/thumbnail.jpg"
+          ],
+          "qty": 1,
+          "user": 2,
+          "itemUrl": "http://localhost:5173/product-details/2",
+          "id": 1
+        }
+      ],
+      "totalAmount": 899,
+      "totalItems": 1,
+      "user": {
+        "email": "hasin@gmail.com",
+        "password": "@Hasin123",
+        "addresses": [],
+        "id": 2
+      },
+      "paymentMethod": "cash",
+      "address": null,
+      "status": "pending",
       "id": 1
     },
     {
-      "title": "Samsung Universe 9",
-      "description": "Samsung's new variant which goes beyond Galaxy to the Universe",
-      "price": 1249,
-      "discountPercentage": 15.46,
-      "rating": 4.09,
-      "stock": 36,
-      "brand": "Samsung",
-      "category": "smartphones",
-      "thumbnail": "https://cdn.dummyjson.com/product-images/3/thumbnail.jpg",
-      "images": [
-        "https://cdn.dummyjson.com/product-images/3/1.jpg"
+      "items": [
+        {
+          "title": "Samsung Universe 9",
+          "description": "Samsung's new variant which goes beyond Galaxy to the Universe",
+          "price": 1249,
+          "discountPercentage": 15.46,
+          "rating": 4.09,
+          "stock": 36,
+          "brand": "Samsung",
+          "category": "smartphones",
+          "thumbnail": "https://cdn.dummyjson.com/product-images/3/thumbnail.jpg",
+          "images": [
+            "https://cdn.dummyjson.com/product-images/3/1.jpg"
+          ],
+          "qty": 1,
+          "user": 1,
+          "itemUrl": "http://localhost:5173/product-details/3",
+          "id": 2
+        }
       ],
-      "qty": 1,
-      "user": 1,
-      "itemUrl": "http://localhost:5173/product-details/3",
+      "totalAmount": 1249,
+      "totalItems": 1,
+      "user": {
+        "email": "dummy@gmail.com",
+        "password": "@Dummy123",
+        "addresses": [
+          {
+            "name": "Dummy",
+            "email": "dummy@gmail.com",
+            "phone": "9876453210",
+            "street": "MadhavPura",
+            "city": "moon crater",
+            "state": "Maharashtra",
+            "pinCode": "424001"
+          }
+        ],
+        "id": 1
+      },
+      "paymentMethod": "cash",
+      "address": {
+        "name": "Dummy",
+        "email": "dummy@gmail.com",
+        "phone": "9876453210",
+        "street": "MadhavPura",
+        "city": "moon crater",
+        "state": "Maharashtra",
+        "pinCode": "424001"
+      },
+      "status": "pending",
       "id": 2
+    },
+    {
+      "items": [
+        {
+          "title": "Brown Perfume",
+          "description": "Royal_Mirage Sport Brown Perfume for Men & Women - 120ml",
+          "price": 40,
+          "discountPercentage": 15.66,
+          "rating": 4,
+          "stock": 52,
+          "brand": "Royal_Mirage",
+          "category": "fragrances",
+          "thumbnail": "https://cdn.dummyjson.com/product-images/12/thumbnail.jpg",
+          "images": [
+            "https://cdn.dummyjson.com/product-images/12/1.jpg",
+            "https://cdn.dummyjson.com/product-images/12/2.jpg",
+            "https://cdn.dummyjson.com/product-images/12/3.png",
+            "https://cdn.dummyjson.com/product-images/12/4.jpg",
+            "https://cdn.dummyjson.com/product-images/12/thumbnail.jpg"
+          ],
+          "qty": 1,
+          "user": 1,
+          "itemUrl": "http://localhost:5173/product-details/12",
+          "id": 2
+        }
+      ],
+      "totalAmount": 40,
+      "totalItems": 1,
+      "user": {
+        "email": "dummy@gmail.com",
+        "password": "@Dummy123",
+        "addresses": [
+          {
+            "name": "Dummy",
+            "email": "dummy@gmail.com",
+            "phone": "9876453210",
+            "street": "MadhavPura",
+            "city": "moon crater",
+            "state": "Maharashtra",
+            "pinCode": "424001"
+          }
+        ],
+        "id": 1
+      },
+      "paymentMethod": "cash",
+      "address": {
+        "name": "Dummy",
+        "email": "dummy@gmail.com",
+        "phone": "9876453210",
+        "street": "MadhavPura",
+        "city": "moon crater",
+        "state": "Maharashtra",
+        "pinCode": "424001"
+      },
+      "status": "pending",
+      "id": 3
     }
   ]
 }
