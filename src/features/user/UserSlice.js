@@ -1,32 +1,40 @@
 import { createAsyncThunk, createSlice } from "@reduxjs/toolkit"
-
+import { fetchLoggedinUserOrder } from "./UserAPI";
 
 const initialState = {
-    value: 0,
+    userOrders: [],
     status: 'idle'
 }
 
-export const incremenetAsyncThunk = createAsyncThunk(
-    'counter/fetchCount',
-    async (amount)=>{
-        const response  = await fetchCount(amount);
-        return response.data;
+export const fetchLoggedinUserOrderAsync = createAsyncThunk(
+    'user/fetchLoggedinUser',
+    async (id)=>{
+        const response  = await fetchLoggedinUserOrder(id);
+        return response;
     }
 )
 
 
-export const counterSlice = createSlice({
-    name: 'counter',
+export const userSlice = createSlice({
+    name: 'user',
     initialState,
     reducers:{
-        incremenet: (state, action)=>{
-            state.value +=1;
-        }
+    },
+    extraReducers:(builder)=>{
+        builder
+        .addCase(fetchLoggedinUserOrderAsync.pending, (state)=>{
+            state.status = 'loading'
+        })
+        .addCase(fetchLoggedinUserOrderAsync.fulfilled, (state, action)=>{
+            state.status = 'idle'
+            state.userOrders = action.payload;
+        })
     }
-
 })
 
 
-export const { incremenet } = counterSlice.actions;
+export const { incremenet } = userSlice.actions;
 
-export default counterSlice.reducer;
+export const selectUserOrders = (state)=>state.user.userOrders;
+
+export default userSlice.reducer;

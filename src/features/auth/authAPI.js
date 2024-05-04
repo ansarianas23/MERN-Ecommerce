@@ -22,7 +22,6 @@ export function loginUser(loginInfo){
         if(data.length){
             if(password == data[0]?.password){
                 resolve(data);
-                // console.log("data from login api", data);
             }else{
                 reject({message: "Wrong Credentials"});
             }

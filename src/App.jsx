@@ -12,7 +12,7 @@ import { selectLoggedInUser } from "./features/auth/authSlice";
 import { fetchItemsByUserIdAsync } from "./features/cart/CartSlice";
 import PageNotFound from "./pages/PageNotFound";
 import OrderSuccessPage from "./pages/OrderSuccessPage";
-import MyOrders from "./pages/MyOrders";
+import MyOrdersPage from "./pages/MyOrdersPage";
 
 const router = createBrowserRouter([
   {
@@ -62,9 +62,9 @@ const router = createBrowserRouter([
     ),
   },
   {
-    path: "/myOrders",
+    path: "/orders",
     element: (
-        <MyOrders />
+        <MyOrdersPage />
     ),
   },
   {

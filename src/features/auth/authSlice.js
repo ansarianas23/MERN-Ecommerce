@@ -8,7 +8,7 @@ const initialState = {
 }
 
 export const createUserAsync = createAsyncThunk(
-    'user/createUser',
+    'auth/createUser',
     async (userData)=>{
         const response  = await createUser(userData);
         return response;
@@ -16,7 +16,7 @@ export const createUserAsync = createAsyncThunk(
 )
 
 export const loginUserAsync = createAsyncThunk(
-    'user/loginUser',
+    'auth/loginUser',
     async (loginInfo)=>{
         const response  = await loginUser(loginInfo);
         return response;
@@ -24,7 +24,7 @@ export const loginUserAsync = createAsyncThunk(
 )
 
 export const updateUserAsync = createAsyncThunk(
-    'user/updateUser',
+    'auth/updateUser',
     async (update)=>{
         // console.log("obj received at thunk", update);
         const response  = await updateUser(update);
@@ -36,7 +36,7 @@ export const updateUserAsync = createAsyncThunk(
 
 
 export const authSlice = createSlice({
-    name: 'user',
+    name: 'auth',
     initialState,
     reducers:{},
     extraReducers:(builder)=>{
@@ -74,7 +74,7 @@ export const authSlice = createSlice({
 
 export const { incremenet } = authSlice.actions;
 
-export const selectLoggedInUser = (state)=>state.user.loggedInUser;
-export const selectError = (state)=>state.user.error;
+export const selectLoggedInUser = (state)=>state.auth.loggedInUser;
+export const selectError = (state)=>state.auth.error;
 
 export default authSlice.reducer;

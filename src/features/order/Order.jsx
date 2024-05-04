@@ -1,14 +1,10 @@
 import React from 'react'
 
-
 const Order = () => {
 
-    const dispacth = useDispatch();
-
-    
   return (
     <div>
-      
+      <div>{/* We will use to show orders on Admin Page */}</div>
     </div>
   )
 }

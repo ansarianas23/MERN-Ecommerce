@@ -10,7 +10,7 @@ export const incremenetAsyncThunk = createAsyncThunk(
     'counter/fetchCount',
     async (amount)=>{
         const response  = await fetchCount(amount);
-        return response.data;
+        return response;
     }
 )
 
@@ -19,9 +19,16 @@ export const counterSlice = createSlice({
     name: 'counter',
     initialState,
     reducers:{
-        incremenet: (state, action)=>{
-            state.value +=1;
-        }
+    },
+    extraReducers:(builder)=>{
+        builder
+        .addCase(incremenetAsyncThunk.pending, (state)=>{
+            state.status = 'loading'
+        })
+        .addCase(incremenetAsyncThunk.fulfilled, (state, action)=>{
+            state.status = 'idle'
+            state.userOrders = action.payload;
+        })
     }
 
 })

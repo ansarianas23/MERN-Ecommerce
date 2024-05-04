@@ -34,7 +34,6 @@ const Checkout = () => {
   }
 
   const handleAddress = (e)=>{
-    e.preventDefault();
     setSelectedAddress(userObj.addresses[e.target.value]);
   }
 
@@ -49,7 +48,7 @@ const Checkout = () => {
       totalItems,
       user:userObj, 
       paymentMethod, 
-      address: selectedAddress, 
+      selectedAddress, 
       status: 'pending' // once product delivered admin can change the status
     }
 
