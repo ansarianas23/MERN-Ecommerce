@@ -13,13 +13,15 @@ import { fetchItemsByUserIdAsync } from "./features/cart/CartSlice";
 import PageNotFound from "./pages/PageNotFound";
 import OrderSuccessPage from "./pages/OrderSuccessPage";
 import MyOrdersPage from "./pages/MyOrdersPage";
+import UserProfile from "./features/user/components/UserProfile";
+import UserProfilePage from "./pages/UserProfilePage";
 
 const router = createBrowserRouter([
   {
     path: "/",
     element: (
       // <ProtectedRoute>
-        <HomePage />
+      <HomePage />
       // </ProtectedRoute>
     ),
   },
@@ -35,7 +37,7 @@ const router = createBrowserRouter([
     path: "/cart",
     element: (
       // <ProtectedRoute>
-        <CartPage />
+      <CartPage />
       // </ProtectedRoute>
     ),
   },
@@ -43,7 +45,7 @@ const router = createBrowserRouter([
     path: "/checkout",
     element: (
       // <ProtectedRoute>
-        <CheckoutPage />
+      <CheckoutPage />
       // </ProtectedRoute>
     ),
   },
@@ -51,20 +53,26 @@ const router = createBrowserRouter([
     path: "/product-details/:id",
     element: (
       // <ProtectedRoute>
-        <ProductDetailsPage />
+      <ProductDetailsPage />
       // </ProtectedRoute>
     ),
   },
   {
     path: "/orderSuccess/:id",
     element: (
-        <OrderSuccessPage />
+      <OrderSuccessPage />
     ),
   },
   {
     path: "/orders",
     element: (
-        <MyOrdersPage />
+      <MyOrdersPage />
+    ),
+  },
+  {
+    path: "/profile",
+    element: (
+      <UserProfilePage />
     ),
   },
   {

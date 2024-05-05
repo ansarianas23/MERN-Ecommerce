@@ -4,4 +4,4 @@ export function fetchLoggedinUserOrder(userId){
         const data = await response.json()
         resolve(data);
     })
-}
+} 

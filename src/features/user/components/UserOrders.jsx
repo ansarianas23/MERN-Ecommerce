@@ -20,10 +20,10 @@ const UserOrders = () => {
   return (
     <>
      {/* {!items.length && <Navigate to="/" replace={true}></Navigate>} */}
+     
       {orders && orders.map((order) => (
         <div key={order.id}>
-          <div>
-            <div className="mx-auto my-12 bg-white max-w-7xl px-4 sm:px-6 lg:px-8">
+            <div className="mx-auto mb-12 bg-white max-w-7xl px-4 sm:px-6 lg:px-8">
               <div className="px-4 py-6 sm:px-6">
                 <h1 className="text-4xl my-5 font-bold tracking-tight text-gray-900">
                   Order # {order.id}
@@ -111,8 +111,7 @@ const UserOrders = () => {
                   </div>
                 </div>
               </div>
-            </div>
-          </div>
+            </div> 
         </div>
       ))}
        {/* {status === 'loading' ? (
