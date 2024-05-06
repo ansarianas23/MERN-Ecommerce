@@ -25,6 +25,14 @@ export const loginUserAsync = createAsyncThunk(
     }
 )
 
+export const signOutUserAsync = createAsyncThunk(
+    'auth/signOut',
+    async ()=>{
+        const response  = await signOut();
+        return response;
+    }
+)
+
 export const authSlice = createSlice({
     name: 'auth',
     initialState,
@@ -48,6 +56,13 @@ export const authSlice = createSlice({
         .addCase(loginUserAsync.rejected, (state, action)=>{
             state.status = 'idle'
             state.error = action.error;
+        })
+        .addCase(signOutUserAsync.pending, (state)=>{
+            state.status = 'loading'
+        })
+        .addCase(signOutUserAsync.fulfilled, (state, action)=>{
+            state.status = 'idle'
+            state.loggedInUser = null;
         })
     }
 

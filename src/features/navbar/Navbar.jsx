@@ -5,35 +5,21 @@ import { Link } from 'react-router-dom'
 import ecommerceLogo from '../../assets/ecommerce-logo.png'
 import { useSelector } from 'react-redux'
 import { selectedCartItems } from '../cart/CartSlice'
-import { selectLoggedInUser } from '../auth/authSlice'
+import { selectUserInfo } from '../user/UserSlice'
+import { navigation, userNavigation } from '../../utils/utility'
 
-const user = {
-  name: 'Tom Cook',
-  email: 'tom@example.com',
-  imageUrl:
-    'https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=facearea&facepad=2&w=256&h=256&q=80',
-}
-const navigation = [
-  { name: 'Home', href: '/', current: true },
-  { name: 'About', href: '/about', current: false },
-  { name: 'Help', href: '/help', current: false },
-]
 
-const userNavigation = [
-  { name: 'My Profile', link: '/profile' },
-  { name: 'My Orders', link: '/orders' },
-  { name: 'Sign out', link: '/login' },
-]
 
 function classNames(...classes) {
   return classes.filter(Boolean).join(' ')
 }
 
 
-const Navbar = () => {
 
+const Navbar = () => {
+  
   const cart = useSelector(selectedCartItems);
-  const user = useSelector(selectLoggedInUser); 
+  const user = useSelector(selectUserInfo);
 
   return (
     <>
@@ -68,15 +54,18 @@ const Navbar = () => {
                   </div>
                   <div className="hidden md:block">
                     <div className="ml-4 flex items-center md:ml-6">
-                    <Link to='/cart'>
-                      <button
-                        type="button"
-                        className="relative rounded-full bg-gray-800 p-1 text-gray-400 hover:text-white focus:outline-none focus:ring-2 focus:ring-white focus:ring-offset-2 focus:ring-offset-gray-800"
-                      >
-                        <span className="absolute -inset-1.5" />
-                        <span className="sr-only">View notifications</span>
-                        <ShoppingCartIcon className="h-6 w-6" aria-hidden="true" />
-                      </button>
+                      {!user && <Link to='/login'>
+                        <button className='bg-white px-3 py-1 rounded-md mr-4'>Login</button>
+                      </Link>}
+
+                      {user && <p className='text-white mr-4 font-semibold'>{user.email}</p>}
+
+                      <Link to='/cart'>
+                        <button type="button" className="relative rounded-full bg-gray-800 p-1 text-gray-400 hover:text-white focus:outline-none focus:ring-2 focus:ring-white focus:ring-offset-2 focus:ring-offset-gray-800" >
+                          <span className="absolute -inset-1.5" />
+                          <span className="sr-only">View notifications</span>
+                          <ShoppingCartIcon className="h-6 w-6" aria-hidden="true" />
+                        </button>
                       </Link>
                       {cart?.length>0 && <span className="inline-flex items-center rounded-full mb-7 -ml-2 z-10 bg-gray-50 px-[6px] py-[2px] text-xs font-bold text-gray-600 ring-1 ring-inset ring-gray-500/10">{cart?.length}</span>}
 
