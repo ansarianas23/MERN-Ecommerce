@@ -1,15 +1,31 @@
 import { createAsyncThunk, createSlice } from "@reduxjs/toolkit"
-import { fetchLoggedinUserOrder } from "./UserAPI";
+import { fetchLoggedinUser, fetchLoggedinUserOrders, updateUser } from "./UserAPI";
 
 const initialState = {
     userOrders: [],
+    userInfo: null,
     status: 'idle'
 }
 
-export const fetchLoggedinUserOrderAsync = createAsyncThunk(
+export const fetchLoggedinUserOrdersAsync = createAsyncThunk(
     'user/fetchLoggedinUser',
     async (id)=>{
-        const response  = await fetchLoggedinUserOrder(id);
+        const response  = await fetchLoggedinUserOrders(id);
+        return response;
+    }
+)
+
+export const fetchLoggedinUserAsync = createAsyncThunk(
+    'auth/fetchLoggedinUser',
+    async (update)=>{
+        const response  = await fetchLoggedinUser(update);
+        return response;
+    }
+)
+export const updateUserAsync = createAsyncThunk(
+    'auth/updateUser',
+    async (update)=>{
+        const response  = await updateUser(update);
         return response;
     }
 )
@@ -22,12 +38,26 @@ export const userSlice = createSlice({
     },
     extraReducers:(builder)=>{
         builder
-        .addCase(fetchLoggedinUserOrderAsync.pending, (state)=>{
+        .addCase(fetchLoggedinUserOrdersAsync.pending, (state)=>{
             state.status = 'loading'
         })
-        .addCase(fetchLoggedinUserOrderAsync.fulfilled, (state, action)=>{
+        .addCase(fetchLoggedinUserOrdersAsync.fulfilled, (state, action)=>{
             state.status = 'idle'
             state.userOrders = action.payload;
+        })
+        .addCase(updateUserAsync.pending, (state)=>{
+            state.status = 'loading'
+        })
+        .addCase(updateUserAsync.fulfilled, (state, action)=>{
+            state.status = 'idle'
+            state.userInfo = action.payload;
+        })
+        .addCase(fetchLoggedinUserAsync.pending, (state)=>{
+            state.status = 'loading'
+        })
+        .addCase(fetchLoggedinUserAsync.fulfilled, (state, action)=>{
+            state.status = 'idle'
+            state.userInfo = action.payload;
         })
     }
 })
@@ -36,5 +66,6 @@ export const userSlice = createSlice({
 export const { incremenet } = userSlice.actions;
 
 export const selectUserOrders = (state)=>state.user.userOrders;
+export const selectUserInfo = (state)=>state.user.userInfo;
 
 export default userSlice.reducer;

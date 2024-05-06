@@ -3,8 +3,8 @@ import { useDispatch, useSelector } from "react-redux";
 import { Link, Navigate } from "react-router-dom";
 import { deleteItemFromCartAsync, selectedCartItems, updateCartAsync } from "../features/cart/CartSlice";
 import { useForm } from "react-hook-form";
-import { selectLoggedInUser, updateUserAsync } from "../features/auth/authSlice";
 import { createOrderAsync, selectCurrentOrder } from "../features/order/orderSlice";
+import { selectUserInfo, updateUserAsync } from "../features/user/UserSlice";
 
 const Checkout = () => {
 
@@ -13,8 +13,7 @@ const Checkout = () => {
   const [paymentMethod, setPaymentMethod] = useState('cash');
   const dispatch = useDispatch();
   const cart = useSelector(selectedCartItems);
-  const user = useSelector(selectLoggedInUser);
-  let userObj = user[0];
+  const user = useSelector(selectUserInfo);
   const currentOrder = useSelector(selectCurrentOrder);  
 
   const cartTotalAmount = cart?.reduce((total, item)=>{
@@ -34,7 +33,7 @@ const Checkout = () => {
   }
 
   const handleAddress = (e)=>{
-    setSelectedAddress(userObj.addresses[e.target.value]);
+    setSelectedAddress(user.addresses[e.target.value]);
   }
 
   const handlePayment = (e)=>{
@@ -46,7 +45,7 @@ const Checkout = () => {
       items: cart,
       totalAmount: cartTotalAmount, 
       totalItems,
-      user:userObj, 
+      user:user, 
       paymentMethod, 
       selectedAddress, 
       status: 'pending' // once product delivered admin can change the status
@@ -66,10 +65,9 @@ const Checkout = () => {
           <div className="lg:col-span-3 p-3 rounded-lg bg-white">
             <form  noValidate onSubmit={handleSubmit((data)=>{
               dispatch(
-                updateUserAsync({...userObj, addresses: [...userObj.addresses, data]})
+                updateUserAsync({...user, addresses: [...user.addresses, data]})
               );
               reset();
-              // console.log({...userObj, addresses: [...userObj.addresses, data]});
             })}>
               <div>
                 <div className="border-b border-gray-900/10 pb-12">
@@ -180,10 +178,10 @@ const Checkout = () => {
 
                   <div className="mt-6 flex items-center justify-end gap-x-6">
                     <button type="button" className="text-sm font-semibold leading-6 text-gray-900">
-                        Cancel
+                      Cancel
                     </button>
                     <button type="submit" className="rounded-md bg-indigo-600 px-3 py-2 text-sm font-semibold text-white shadow-sm hover:bg-indigo-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600">
-                      Save
+                      Add
                     </button>
                   </div>
 
@@ -199,7 +197,7 @@ const Checkout = () => {
 
                   {/* Address list starts here */}
                   <ul role="list" className="space-y-3">
-                    {userObj?.addresses?.map((address, index) => (
+                    {user?.addresses?.map((address, index) => (
                       <li key={index} className="flex justify-between gap-x-6 py-5 border-[1px] px-2 rounded-md border-gray-200 ">
                         <div className="flex min-w-0 gap-x-4 ">
                           <input

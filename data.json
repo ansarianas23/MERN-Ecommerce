@@ -2085,42 +2085,46 @@
       "password": "@Hasin123",
       "addresses": [
         {
-          "name": "Hasin",
-          "email": "hasin@gmail.com",
-          "phone": "9876453210",
+          "name": "Hasin Dummy 123",
+          "email": "hasinduymmy@gmail.com",
+          "phone": "123456789",
+          "city": "Dhule",
+          "street": "MadhavPura Near Pala bazar",
+          "state": "Maharashtra",
+          "pinCode": "424001"
+        },
+        {
+          "name": "Hasin 2",
+          "email": "jason@gmail.com",
+          "phone": "9876453252",
           "street": "xyz new galli no 4",
+          "city": "Malegaon",
+          "state": "Lunar",
+          "pinCode": "424001"
+        },
+        {
+          "name": "Hasin 22",
+          "email": "hasin@gmail.com",
+          "phone": "9876453252",
+          "street": "MadhavPura no 2",
           "city": "moon crater",
           "state": "Maharashtra",
+          "pinCode": "424001"
+        },
+        {
+          "name": "New user JSON",
+          "email": "newuser@gmail.com",
+          "phone": "9876543210",
+          "city": "new city",
+          "street": "new user street",
+          "state": "new state",
           "pinCode": "424001"
         }
       ],
       "id": 1
     }
   ],
-  "cart": [
-    {
-      "title": "Infinix INBOOK",
-      "description": "Infinix Inbook X1 Ci3 10th 8GB 256GB 14 Win10 Grey – 1 Year Warranty",
-      "price": 1099,
-      "discountPercentage": 11.83,
-      "rating": 4.54,
-      "stock": 96,
-      "brand": "Infinix",
-      "category": "laptops",
-      "thumbnail": "https://cdn.dummyjson.com/product-images/9/thumbnail.jpg",
-      "images": [
-        "https://cdn.dummyjson.com/product-images/9/1.jpg",
-        "https://cdn.dummyjson.com/product-images/9/2.png",
-        "https://cdn.dummyjson.com/product-images/9/3.png",
-        "https://cdn.dummyjson.com/product-images/9/4.jpg",
-        "https://cdn.dummyjson.com/product-images/9/thumbnail.jpg"
-      ],
-      "qty": 3,
-      "user": 1,
-      "itemUrl": "http://localhost:5173/product-details/9",
-      "id": 1
-    }
-  ],
+  "cart": [],
   "orders": [
     {
       "items": [
@@ -2232,6 +2236,243 @@
       },
       "status": "pending",
       "id": 2
+    },
+    {
+      "items": [
+        {
+          "title": "perfume Oil",
+          "description": "Mega Discount, Impression of Acqua Di Gio by GiorgioArmani concentrated attar perfume Oil",
+          "price": 13,
+          "discountPercentage": 8.4,
+          "rating": 4.26,
+          "stock": 65,
+          "brand": "Impression of Acqua Di Gio",
+          "category": "fragrances",
+          "thumbnail": "https://cdn.dummyjson.com/product-images/11/thumbnail.jpg",
+          "images": [
+            "https://cdn.dummyjson.com/product-images/11/1.jpg",
+            "https://cdn.dummyjson.com/product-images/11/2.jpg",
+            "https://cdn.dummyjson.com/product-images/11/3.jpg",
+            "https://cdn.dummyjson.com/product-images/11/thumbnail.jpg"
+          ],
+          "qty": 1,
+          "user": 1,
+          "itemUrl": "http://localhost:5173/product-details/11",
+          "id": 1
+        }
+      ],
+      "totalAmount": 13,
+      "totalItems": 1,
+      "user": {
+        "email": "hasin@gmail.com",
+        "password": "@Hasin123",
+        "addresses": [
+          {
+            "name": "Hasin",
+            "email": "hasin@gmail.com",
+            "phone": "9876453210",
+            "street": "xyz new galli no 4",
+            "city": "moon crater",
+            "state": "Maharashtra",
+            "pinCode": "424001"
+          }
+        ],
+        "id": 1
+      },
+      "paymentMethod": "cash",
+      "selectedAddress": {
+        "name": "Hasin",
+        "email": "hasin@gmail.com",
+        "phone": "9876453210",
+        "street": "xyz new galli no 4",
+        "city": "moon crater",
+        "state": "Maharashtra",
+        "pinCode": "424001"
+      },
+      "status": "pending",
+      "id": 3
+    },
+    {
+      "items": [
+        {
+          "title": "Samsung Universe 9",
+          "description": "Samsung's new variant which goes beyond Galaxy to the Universe",
+          "price": 1249,
+          "discountPercentage": 15.46,
+          "rating": 4.09,
+          "stock": 36,
+          "brand": "Samsung",
+          "category": "smartphones",
+          "thumbnail": "https://cdn.dummyjson.com/product-images/3/thumbnail.jpg",
+          "images": [
+            "https://cdn.dummyjson.com/product-images/3/1.jpg"
+          ],
+          "qty": 1,
+          "user": 1,
+          "itemUrl": "http://localhost:5173/product-details/3",
+          "id": 1
+        }
+      ],
+      "totalAmount": 1249,
+      "totalItems": 1,
+      "user": {
+        "email": "hasin@gmail.com",
+        "password": "@Hasin123",
+        "addresses": [
+          {
+            "name": "Hasin",
+            "email": "hasin@gmail.com",
+            "phone": "9876453210",
+            "street": "xyz new galli no 4",
+            "city": "moon crater",
+            "state": "Maharashtra",
+            "pinCode": "424001"
+          }
+        ],
+        "id": 1
+      },
+      "paymentMethod": "cash",
+      "selectedAddress": {
+        "name": "Hasin",
+        "email": "hasin@gmail.com",
+        "phone": "9876453210",
+        "street": "xyz new galli no 4",
+        "city": "moon crater",
+        "state": "Maharashtra",
+        "pinCode": "424001"
+      },
+      "status": "pending",
+      "id": 4
+    },
+    {
+      "items": [
+        {
+          "title": "Huawei P30",
+          "description": "Huawei’s re-badged P30 Pro New Edition was officially unveiled yesterday in Germany and now the device has made its way to the UK.",
+          "price": 499,
+          "discountPercentage": 10.58,
+          "rating": 4.09,
+          "stock": 32,
+          "brand": "Huawei",
+          "category": "smartphones",
+          "thumbnail": "https://cdn.dummyjson.com/product-images/5/thumbnail.jpg",
+          "images": [
+            "https://cdn.dummyjson.com/product-images/5/1.jpg",
+            "https://cdn.dummyjson.com/product-images/5/2.jpg",
+            "https://cdn.dummyjson.com/product-images/5/3.jpg"
+          ],
+          "qty": 2,
+          "user": 1,
+          "itemUrl": "http://localhost:5173/product-details/5",
+          "id": 1
+        }
+      ],
+      "totalAmount": 998,
+      "totalItems": 2,
+      "user": {
+        "email": "hasin@gmail.com",
+        "password": "@Hasin123",
+        "addresses": [
+          {
+            "name": "Hasin Dummy",
+            "email": "hasinduymmy@gmail.com",
+            "phone": "123456789",
+            "street": "MadhavPura",
+            "city": "Dhule",
+            "state": "Maharashtra",
+            "pinCode": "424001"
+          },
+          {
+            "name": "Hasin 2",
+            "email": "jason@gmail.com",
+            "phone": "9876453252",
+            "street": "xyz new galli no 4",
+            "city": "Malegaon",
+            "state": "Lunar",
+            "pinCode": "424001"
+          },
+          {
+            "name": "Hasin 22",
+            "email": "hasin@gmail.com",
+            "phone": "9876453252",
+            "street": "MadhavPura no 2",
+            "city": "moon crater",
+            "state": "Maharashtra",
+            "pinCode": "424001"
+          }
+        ],
+        "id": 1
+      },
+      "paymentMethod": "cash",
+      "selectedAddress": null,
+      "status": "pending",
+      "id": 5
+    },
+    {
+      "items": [
+        {
+          "title": "Microsoft Surface Laptop 4",
+          "description": "Style and speed. Stand out on HD video calls backed by Studio Mics. Capture ideas on the vibrant touchscreen.",
+          "price": 1499,
+          "discountPercentage": 10.23,
+          "rating": 4.43,
+          "stock": 68,
+          "brand": "Microsoft Surface",
+          "category": "laptops",
+          "thumbnail": "https://cdn.dummyjson.com/product-images/8/thumbnail.jpg",
+          "images": [
+            "https://cdn.dummyjson.com/product-images/8/1.jpg",
+            "https://cdn.dummyjson.com/product-images/8/2.jpg",
+            "https://cdn.dummyjson.com/product-images/8/3.jpg",
+            "https://cdn.dummyjson.com/product-images/8/4.jpg",
+            "https://cdn.dummyjson.com/product-images/8/thumbnail.jpg"
+          ],
+          "qty": 1,
+          "user": 1,
+          "itemUrl": "http://localhost:5173/product-details/8",
+          "id": 1
+        }
+      ],
+      "totalAmount": 1499,
+      "totalItems": 1,
+      "user": {
+        "email": "hasin@gmail.com",
+        "password": "@Hasin123",
+        "addresses": [
+          {
+            "name": "Hasin Dummy",
+            "email": "hasinduymmy@gmail.com",
+            "phone": "123456789",
+            "street": "MadhavPura",
+            "city": "Dhule",
+            "state": "Maharashtra",
+            "pinCode": "424001"
+          },
+          {
+            "name": "Hasin 2",
+            "email": "jason@gmail.com",
+            "phone": "9876453252",
+            "street": "xyz new galli no 4",
+            "city": "Malegaon",
+            "state": "Lunar",
+            "pinCode": "424001"
+          },
+          {
+            "name": "Hasin 22",
+            "email": "hasin@gmail.com",
+            "phone": "9876453252",
+            "street": "MadhavPura no 2",
+            "city": "moon crater",
+            "state": "Maharashtra",
+            "pinCode": "424001"
+          }
+        ],
+        "id": 1
+      },
+      "paymentMethod": "cash",
+      "selectedAddress": null,
+      "status": "pending",
+      "id": 6
     }
   ]
 }

@@ -3,12 +3,13 @@ import { Link, Navigate } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 import { deleteItemFromCartAsync, selectedCartItems, updateCartAsync } from "./CartSlice";
 import { selectLoggedInUser } from "../auth/authSlice";
+import { selectUserInfo } from "../user/UserSlice";
 
 
 const Cart = () => {
   const cart = useSelector(selectedCartItems);
   const dispatch = useDispatch();
-  const user = useSelector(selectLoggedInUser);
+  const user = useSelector(selectUserInfo);
 
   const cartTotalValue = cart?.reduce((total, item)=>{
     return total + item.price * item.qty;

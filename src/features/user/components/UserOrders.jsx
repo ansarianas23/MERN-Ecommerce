@@ -1,20 +1,16 @@
 import React, { useEffect } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
-import { fetchLoggedinUserOrderAsync, selectUserOrders } from '../UserSlice';
-import { selectLoggedInUser } from '../../auth/authSlice';
-import { Link } from 'react-router-dom';
+import { fetchLoggedinUserOrdersAsync, selectUserInfo, selectUserOrders } from '../UserSlice';
+
 
 const UserOrders = () => {
 
     const dispatch = useDispatch();
-    const user = useSelector(selectLoggedInUser);
-    const userObj = user[0];
-
+    const user = useSelector(selectUserInfo);
     const orders = useSelector(selectUserOrders);
-    // console.log('orders are', orders);
 
     useEffect(()=>{
-        dispatch(fetchLoggedinUserOrderAsync(userObj?.id));
+        dispatch(fetchLoggedinUserOrdersAsync(user?.id));
     },[]);
 
   return (
@@ -26,10 +22,10 @@ const UserOrders = () => {
             <div className="mx-auto mb-12 bg-white max-w-7xl px-4 sm:px-6 lg:px-8">
               <div className="px-4 py-6 sm:px-6">
                 <h1 className="text-4xl my-5 font-bold tracking-tight text-gray-900">
-                  Order # {order.id}
+                  Order # {order?.id}
                 </h1>
                 <h3 className="text-xl my-5 font-bold tracking-tight text-red-900">
-                  Order Status : {order.status}
+                  Order Status : {order?.status}
                 </h3>
                 <div className="flow-root">
                   <ul className="-my-6 divide-y divide-gray-200">
@@ -37,8 +33,8 @@ const UserOrders = () => {
                       <li key={item.id} className="flex py-6">
                         <div className="h-24 w-24 flex-shrink-0 overflow-hidden rounded-md border border-gray-200">
                           <img
-                            src={item.thumbnail}
-                            alt={item.title}
+                            src={item?.thumbnail}
+                            alt={item?.title}
                             className="h-full w-full object-cover object-center"
                           />
                         </div>
@@ -91,22 +87,22 @@ const UserOrders = () => {
                   <div className="flex gap-x-4">
                     <div className="min-w-0 flex-auto">
                       <p className="text-sm font-semibold leading-6 text-gray-900">
-                        Name: <span className='font-normal'>{order.selectedAddress.name}</span>
+                        Name: <span className='font-normal'>{order?.selectedAddress?.name}</span>
                       </p>
                       <p className="text-sm font-semibold leading-6 text-gray-900">
-                        Address: <span className='font-normal'>{order.selectedAddress.street}</span>
+                        Address: <span className='font-normal'>{order?.selectedAddress?.street}</span>
                       </p>
                       <p className="text-sm font-semibold leading-6 text-gray-900">
-                        Pin Code: <span className='font-normal'>{order.selectedAddress.pinCode}</span>
+                        Pin Code: <span className='font-normal'>{order?.selectedAddress?.pinCode}</span>
                       </p>
                     </div>
                   </div>
                   <div className="hidden sm:flex sm:flex-col sm:items-end">
                       <p className="text-sm font-semibold leading-6 text-gray-900">
-                        Phone: <span className='font-normal'>{order.selectedAddress.phone}</span>
+                        Phone: <span className='font-normal'>{order.selectedAddress?.phone}</span>
                       </p>
                       <p className="text-sm font-semibold leading-6 text-gray-900">
-                        City: <span className='font-normal'>{order.selectedAddress.city}</span>
+                        City: <span className='font-normal'>{order.selectedAddress?.city}</span>
                       </p>
                   </div>
                 </div>

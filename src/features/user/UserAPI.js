@@ -1,7 +1,27 @@
-export function fetchLoggedinUserOrder(userId){
+export function fetchLoggedinUserOrders(userId){
     return new Promise(async (resolve)=>{
         const response = await fetch('http://localhost:3000/orders?user.id='+userId)
         const data = await response.json()
         resolve(data);
     })
-} 
+}
+
+export function fetchLoggedinUser(userId){
+    return new Promise(async (resolve)=>{
+        const response = await fetch('http://localhost:3000/users/'+userId);
+        const data = await response.json()
+        resolve(data);
+    })
+}
+
+export function updateUser(update){
+    return new Promise(async (resolve)=>{
+        const response = await fetch('http://localhost:3000/users/'+update.id,{
+            method: 'PATCH',
+            body: JSON.stringify(update),
+            headers: {'content-type': 'application/json'}
+        });
+        const data = await response.json()
+        resolve(data);
+    })
+}
