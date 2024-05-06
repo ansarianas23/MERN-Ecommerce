@@ -3,7 +3,7 @@ import Login from '../features/auth/components/Login'
 
 const LoginPage = () => {
   return (
-    <div className='py-4'>
+    <div className='my-5 md:my-10'>
       <Login></Login>
     </div>
   )
