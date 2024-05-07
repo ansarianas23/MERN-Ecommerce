@@ -54,6 +54,10 @@ const Navbar = () => {
                   </div>
                   <div className="hidden md:block">
                     <div className="ml-4 flex items-center md:ml-6">
+                      <Link to='/admin'>
+                        <button className='bg-white px-3 py-1 rounded-md mr-4'>Admin Panel</button>
+                      </Link>
+
                       {!user && <Link to='/login'>
                         <button className='bg-white px-3 py-1 rounded-md mr-4'>Login</button>
                       </Link>}

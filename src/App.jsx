@@ -5,7 +5,6 @@ import LoginPage from "./pages/LoginPage";
 import SignUpPage from "./pages/SignUpPage";
 import { createBrowserRouter, RouterProvider } from "react-router-dom";
 import ProductDetailsPage from "./pages/ProductDetailsPage";
-import ProtectedRoute from "./features/auth/ProtectedRoute";
 import { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { selectLoggedInUser } from "./features/auth/authSlice";
@@ -13,11 +12,11 @@ import { fetchItemsByUserIdAsync } from "./features/cart/CartSlice";
 import PageNotFound from "./pages/PageNotFound";
 import OrderSuccessPage from "./pages/OrderSuccessPage";
 import MyOrdersPage from "./pages/MyOrdersPage";
-import UserProfile from "./features/user/components/UserProfile";
 import UserProfilePage from "./pages/UserProfilePage";
 import { fetchLoggedinUserAsync } from "./features/user/UserSlice";
 import LogOut from "./features/auth/components/LogOut";
 import ForgotPasswordPage from "./pages/ForgotPasswordPage";
+import ProtectedAdmin from "./features/auth/ProtectedAdmin";
 
 const router = createBrowserRouter([
   {
@@ -88,6 +87,12 @@ const router = createBrowserRouter([
     path: "/forgot-password",
     element: (
       <ForgotPasswordPage />
+    ),
+  },
+  {
+    path: "/admin",
+    element: (
+      <ProtectedAdmin />
     ),
   },
   {
