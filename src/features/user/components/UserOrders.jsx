@@ -1,6 +1,7 @@
 import React, { useEffect } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
 import { fetchLoggedinUserOrdersAsync, selectUserInfo, selectUserOrders } from '../UserSlice';
+import { discountedPrice } from '../../../utils/constants';
 
 
 const UserOrders = () => {
@@ -46,9 +47,9 @@ const UserOrders = () => {
                                 <a href={item.id}>{item.title}</a>
                               </h3>
                               <div>
-                                <p className="ml-4 font-medium">${item.price}</p>
-                                {/* <p className="ml-4 font-medium">${Math.round(item.price * (1 - item.discountPercentage /100 ))}</p> */}
-                                {/* <p className="ml-4 text-gray-400 line-through">${item.price}</p> */}
+                                {/* <p className="ml-4 font-medium">${item.price}</p> */}
+                                <p className="ml-4 font-medium">${discountedPrice(item)}</p>
+                                <p className="ml-4 text-gray-400 line-through">${item.price}</p>
                               </div>
                             </div>
                             <p className="mt-1 text-sm text-gray-500">

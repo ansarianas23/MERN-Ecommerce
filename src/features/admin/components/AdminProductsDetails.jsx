@@ -7,6 +7,7 @@ import { fetchProductByIdAsync, selectProduct } from "../../product/ProductSlice
 import { useParams } from "react-router-dom";
 import { addToCartAsync } from "../../cart/CartSlice";
 import { selectLoggedInUser } from "../../auth/authSlice";
+import { discountedPrice } from "../../../utils/constants";
 
 const colors = [
     { name: 'White', class: 'bg-white', selectedClass: 'ring-gray-400' },
@@ -109,8 +110,10 @@ const AdminProductDetails = () => {
           <div className="mt-4 lg:row-span-3 lg:mt-0">
             <h2 className="sr-only">Product information</h2>
             <p className="text-3xl tracking-tight text-gray-900">
-              ${product?.price}
+              ${discountedPrice(product)}
             </p>
+            <p className="text-3xl tracking-tight text-gray-900">${discountedPrice(product)}</p>
+            <p className="tracking-tight text-gray-500 line-through text-xl ">${product?.price}</p>
 
             {/* Reviews */}
             <div className="mt-6">

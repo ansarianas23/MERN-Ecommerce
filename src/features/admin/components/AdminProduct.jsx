@@ -1,5 +1,6 @@
 import { StarIcon } from "@heroicons/react/20/solid";
 import React from "react";
+import { discountedPrice } from "../../../utils/constants";
 
 const AdminProduct = ({data}) => {
 
@@ -24,7 +25,7 @@ const AdminProduct = ({data}) => {
         </div>
 
         <div>
-          <p className="text-sm font-medium text-gray-900">$ {Math.round(price * (1 - discountPercentage /100 ))}</p>
+          <p className="text-sm font-medium text-gray-900">$ {discountedPrice(data)}</p>
           <p className="text-sm font-medium text-gray-400 line-through ">$ {price}</p>
         </div>
       </div>

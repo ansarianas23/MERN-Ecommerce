@@ -12,6 +12,7 @@ export const navigation = [
   { name: 'About', link: '/about', user: true },
   { name: 'Help', link: '/help', user: true },
   { name: 'Admin', link: '/admin', admin: true },
+  { name: 'Admin Orders', link: '/admin/orders', admin: true },
 ]
 
 // navbar user navigation menus
@@ -20,3 +21,4 @@ export const userNavigation = [
   { name: 'My Orders', link: '/orders' },
   { name: 'Sign out', link: '/logout' },
 ]
+

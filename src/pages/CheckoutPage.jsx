@@ -5,6 +5,7 @@ import { deleteItemFromCartAsync, selectedCartItems, updateCartAsync } from "../
 import { useForm } from "react-hook-form";
 import { createOrderAsync, selectCurrentOrder } from "../features/order/orderSlice";
 import { selectUserInfo, updateUserAsync } from "../features/user/UserSlice";
+import { discountedPrice } from "../utils/constants";
 
 const Checkout = () => {
 
@@ -17,7 +18,7 @@ const Checkout = () => {
   const currentOrder = useSelector(selectCurrentOrder);  
 
   const cartTotalAmount = cart?.reduce((total, item)=>{
-    return total + item.price * item.qty;
+    return total + discountedPrice(item) * item.qty;
   },0);
 
   const totalItems = cart?.reduce((total, item)=>{
@@ -309,7 +310,10 @@ const Checkout = () => {
                               <h3>
                                 <a href={item.itemUrl}>{item.title}</a>
                               </h3>
-                              <p className="ml-4">$ {item.price}</p>
+                              <div>
+                                <p className="ml-4">$ {discountedPrice(item)}</p>
+                                <p className="ml-4 text-sm line-through text-gray-500">$ {item.price}</p>
+                              </div>
                             </div>
                             <p className="mt-1 text-sm text-gray-500">
                               {item?.color}

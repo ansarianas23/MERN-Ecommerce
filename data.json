@@ -2177,12 +2177,43 @@
     {
       "email": "jason@gmail.com",
       "password": "@Jason123",
-      "addresses": [],
+      "addresses": [
+        {
+          "name": "jason Sharma",
+          "email": "jasonSharma@gmail.com",
+          "phone": "9876453210",
+          "street": "MadhavPura Near Pala bazar",
+          "city": "Dhule",
+          "state": "Maharashtra",
+          "pinCode": "424001"
+        }
+      ],
       "role": "user",
       "id": 2
     }
   ],
-  "cart": [],
+  "cart": [
+    {
+      "title": "HP Pavilion 15-DK1056WM",
+      "description": "HP Pavilion 15-DK1056WM Gaming Laptop 10th Gen Core i5, 8GB, 256GB SSD, GTX 1650 4GB, Windows 10",
+      "price": 1099,
+      "discountPercentage": 6.18,
+      "rating": 4.43,
+      "stock": 89,
+      "brand": "HP Pavilion",
+      "category": "laptops",
+      "thumbnail": "https://cdn.dummyjson.com/product-images/10/thumbnail.jpeg",
+      "images": [
+        "https://cdn.dummyjson.com/product-images/10/1.jpg",
+        "https://cdn.dummyjson.com/product-images/10/2.jpg",
+        "https://cdn.dummyjson.com/product-images/10/3.jpg"
+      ],
+      "qty": 1,
+      "user": 1,
+      "itemUrl": "http://localhost:5173/product-details/10",
+      "id": 2
+    }
+  ],
   "orders": [
     {
       "items": [
@@ -2236,7 +2267,7 @@
         "state": "Maharashtra",
         "pinCode": "424001"
       },
-      "status": "pending",
+      "status": "dispatched",
       "id": 1
     },
     {
@@ -2292,7 +2323,7 @@
         "state": "Maharashtra",
         "pinCode": "424001"
       },
-      "status": "pending",
+      "status": "cancelled",
       "id": 2
     },
     {
@@ -2347,7 +2378,7 @@
         "state": "Maharashtra",
         "pinCode": "424001"
       },
-      "status": "pending",
+      "status": "delivered",
       "id": 3
     },
     {
@@ -2399,7 +2430,7 @@
         "state": "Maharashtra",
         "pinCode": "424001"
       },
-      "status": "pending",
+      "status": "delivered",
       "id": 4
     },
     {
@@ -2531,6 +2562,975 @@
       "selectedAddress": null,
       "status": "pending",
       "id": 6
+    },
+    {
+      "items": [
+        {
+          "title": "Infinix INBOOK",
+          "description": "Infinix Inbook X1 Ci3 10th 8GB 256GB 14 Win10 Grey – 1 Year Warranty",
+          "price": 1099,
+          "discountPercentage": 11.83,
+          "rating": 4.54,
+          "stock": 96,
+          "brand": "Infinix",
+          "category": "laptops",
+          "thumbnail": "https://cdn.dummyjson.com/product-images/9/thumbnail.jpg",
+          "images": [
+            "https://cdn.dummyjson.com/product-images/9/1.jpg",
+            "https://cdn.dummyjson.com/product-images/9/2.png",
+            "https://cdn.dummyjson.com/product-images/9/3.png",
+            "https://cdn.dummyjson.com/product-images/9/4.jpg",
+            "https://cdn.dummyjson.com/product-images/9/thumbnail.jpg"
+          ],
+          "qty": 2,
+          "user": 2,
+          "itemUrl": "http://localhost:5173/product-details/9",
+          "id": 3
+        }
+      ],
+      "totalAmount": 1938,
+      "totalItems": 2,
+      "user": {
+        "email": "jason@gmail.com",
+        "password": "@Jason123",
+        "addresses": [
+          {
+            "name": "jason Sharma",
+            "email": "jasonSharma@gmail.com",
+            "phone": "9876453210",
+            "street": "MadhavPura Near Pala bazar",
+            "city": "Dhule",
+            "state": "Maharashtra",
+            "pinCode": "424001"
+          }
+        ],
+        "role": "user",
+        "id": 2
+      },
+      "paymentMethod": "cash",
+      "selectedAddress": {
+        "name": "jason Sharma",
+        "email": "jasonSharma@gmail.com",
+        "phone": "9876453210",
+        "street": "MadhavPura Near Pala bazar",
+        "city": "Dhule",
+        "state": "Maharashtra",
+        "pinCode": "424001"
+      },
+      "status": "pending",
+      "id": 7
+    },
+    {
+      "items": [
+        {
+          "title": "Infinix INBOOK",
+          "description": "Infinix Inbook X1 Ci3 10th 8GB 256GB 14 Win10 Grey – 1 Year Warranty",
+          "price": 1099,
+          "discountPercentage": 11.83,
+          "rating": 4.54,
+          "stock": 96,
+          "brand": "Infinix",
+          "category": "laptops",
+          "thumbnail": "https://cdn.dummyjson.com/product-images/9/thumbnail.jpg",
+          "images": [
+            "https://cdn.dummyjson.com/product-images/9/1.jpg",
+            "https://cdn.dummyjson.com/product-images/9/2.png",
+            "https://cdn.dummyjson.com/product-images/9/3.png",
+            "https://cdn.dummyjson.com/product-images/9/4.jpg",
+            "https://cdn.dummyjson.com/product-images/9/thumbnail.jpg"
+          ],
+          "qty": 2,
+          "user": 2,
+          "itemUrl": "http://localhost:5173/product-details/9",
+          "id": 3
+        }
+      ],
+      "totalAmount": 1938,
+      "totalItems": 2,
+      "user": {
+        "email": "jason@gmail.com",
+        "password": "@Jason123",
+        "addresses": [
+          {
+            "name": "jason Sharma",
+            "email": "jasonSharma@gmail.com",
+            "phone": "9876453210",
+            "street": "MadhavPura Near Pala bazar",
+            "city": "Dhule",
+            "state": "Maharashtra",
+            "pinCode": "424001"
+          }
+        ],
+        "role": "user",
+        "id": 2
+      },
+      "paymentMethod": "cash",
+      "selectedAddress": {
+        "name": "jason Sharma",
+        "email": "jasonSharma@gmail.com",
+        "phone": "9876453210",
+        "street": "MadhavPura Near Pala bazar",
+        "city": "Dhule",
+        "state": "Maharashtra",
+        "pinCode": "424001"
+      },
+      "status": "pending",
+      "id": 7
+    },
+    {
+      "items": [
+        {
+          "title": "Infinix INBOOK",
+          "description": "Infinix Inbook X1 Ci3 10th 8GB 256GB 14 Win10 Grey – 1 Year Warranty",
+          "price": 1099,
+          "discountPercentage": 11.83,
+          "rating": 4.54,
+          "stock": 96,
+          "brand": "Infinix",
+          "category": "laptops",
+          "thumbnail": "https://cdn.dummyjson.com/product-images/9/thumbnail.jpg",
+          "images": [
+            "https://cdn.dummyjson.com/product-images/9/1.jpg",
+            "https://cdn.dummyjson.com/product-images/9/2.png",
+            "https://cdn.dummyjson.com/product-images/9/3.png",
+            "https://cdn.dummyjson.com/product-images/9/4.jpg",
+            "https://cdn.dummyjson.com/product-images/9/thumbnail.jpg"
+          ],
+          "qty": 2,
+          "user": 2,
+          "itemUrl": "http://localhost:5173/product-details/9",
+          "id": 3
+        }
+      ],
+      "totalAmount": 1938,
+      "totalItems": 2,
+      "user": {
+        "email": "jason@gmail.com",
+        "password": "@Jason123",
+        "addresses": [
+          {
+            "name": "jason Sharma",
+            "email": "jasonSharma@gmail.com",
+            "phone": "9876453210",
+            "street": "MadhavPura Near Pala bazar",
+            "city": "Dhule",
+            "state": "Maharashtra",
+            "pinCode": "424001"
+          }
+        ],
+        "role": "user",
+        "id": 2
+      },
+      "paymentMethod": "cash",
+      "selectedAddress": {
+        "name": "jason Sharma",
+        "email": "jasonSharma@gmail.com",
+        "phone": "9876453210",
+        "street": "MadhavPura Near Pala bazar",
+        "city": "Dhule",
+        "state": "Maharashtra",
+        "pinCode": "424001"
+      },
+      "status": "pending",
+      "id": 7
+    },
+    {
+      "items": [
+        {
+          "title": "Infinix INBOOK",
+          "description": "Infinix Inbook X1 Ci3 10th 8GB 256GB 14 Win10 Grey – 1 Year Warranty",
+          "price": 1099,
+          "discountPercentage": 11.83,
+          "rating": 4.54,
+          "stock": 96,
+          "brand": "Infinix",
+          "category": "laptops",
+          "thumbnail": "https://cdn.dummyjson.com/product-images/9/thumbnail.jpg",
+          "images": [
+            "https://cdn.dummyjson.com/product-images/9/1.jpg",
+            "https://cdn.dummyjson.com/product-images/9/2.png",
+            "https://cdn.dummyjson.com/product-images/9/3.png",
+            "https://cdn.dummyjson.com/product-images/9/4.jpg",
+            "https://cdn.dummyjson.com/product-images/9/thumbnail.jpg"
+          ],
+          "qty": 2,
+          "user": 2,
+          "itemUrl": "http://localhost:5173/product-details/9",
+          "id": 3
+        }
+      ],
+      "totalAmount": 1938,
+      "totalItems": 2,
+      "user": {
+        "email": "jason@gmail.com",
+        "password": "@Jason123",
+        "addresses": [
+          {
+            "name": "jason Sharma",
+            "email": "jasonSharma@gmail.com",
+            "phone": "9876453210",
+            "street": "MadhavPura Near Pala bazar",
+            "city": "Dhule",
+            "state": "Maharashtra",
+            "pinCode": "424001"
+          }
+        ],
+        "role": "user",
+        "id": 2
+      },
+      "paymentMethod": "cash",
+      "selectedAddress": {
+        "name": "jason Sharma",
+        "email": "jasonSharma@gmail.com",
+        "phone": "9876453210",
+        "street": "MadhavPura Near Pala bazar",
+        "city": "Dhule",
+        "state": "Maharashtra",
+        "pinCode": "424001"
+      },
+      "status": "pending",
+      "id": 7
+    },
+    {
+      "items": [
+        {
+          "title": "Infinix INBOOK",
+          "description": "Infinix Inbook X1 Ci3 10th 8GB 256GB 14 Win10 Grey – 1 Year Warranty",
+          "price": 1099,
+          "discountPercentage": 11.83,
+          "rating": 4.54,
+          "stock": 96,
+          "brand": "Infinix",
+          "category": "laptops",
+          "thumbnail": "https://cdn.dummyjson.com/product-images/9/thumbnail.jpg",
+          "images": [
+            "https://cdn.dummyjson.com/product-images/9/1.jpg",
+            "https://cdn.dummyjson.com/product-images/9/2.png",
+            "https://cdn.dummyjson.com/product-images/9/3.png",
+            "https://cdn.dummyjson.com/product-images/9/4.jpg",
+            "https://cdn.dummyjson.com/product-images/9/thumbnail.jpg"
+          ],
+          "qty": 2,
+          "user": 2,
+          "itemUrl": "http://localhost:5173/product-details/9",
+          "id": 3
+        }
+      ],
+      "totalAmount": 1938,
+      "totalItems": 2,
+      "user": {
+        "email": "jason@gmail.com",
+        "password": "@Jason123",
+        "addresses": [
+          {
+            "name": "jason Sharma",
+            "email": "jasonSharma@gmail.com",
+            "phone": "9876453210",
+            "street": "MadhavPura Near Pala bazar",
+            "city": "Dhule",
+            "state": "Maharashtra",
+            "pinCode": "424001"
+          }
+        ],
+        "role": "user",
+        "id": 2
+      },
+      "paymentMethod": "cash",
+      "selectedAddress": {
+        "name": "jason Sharma",
+        "email": "jasonSharma@gmail.com",
+        "phone": "9876453210",
+        "street": "MadhavPura Near Pala bazar",
+        "city": "Dhule",
+        "state": "Maharashtra",
+        "pinCode": "424001"
+      },
+      "status": "pending",
+      "id": 7
+    },
+    {
+      "items": [
+        {
+          "title": "Infinix INBOOK",
+          "description": "Infinix Inbook X1 Ci3 10th 8GB 256GB 14 Win10 Grey – 1 Year Warranty",
+          "price": 1099,
+          "discountPercentage": 11.83,
+          "rating": 4.54,
+          "stock": 96,
+          "brand": "Infinix",
+          "category": "laptops",
+          "thumbnail": "https://cdn.dummyjson.com/product-images/9/thumbnail.jpg",
+          "images": [
+            "https://cdn.dummyjson.com/product-images/9/1.jpg",
+            "https://cdn.dummyjson.com/product-images/9/2.png",
+            "https://cdn.dummyjson.com/product-images/9/3.png",
+            "https://cdn.dummyjson.com/product-images/9/4.jpg",
+            "https://cdn.dummyjson.com/product-images/9/thumbnail.jpg"
+          ],
+          "qty": 2,
+          "user": 2,
+          "itemUrl": "http://localhost:5173/product-details/9",
+          "id": 3
+        }
+      ],
+      "totalAmount": 1938,
+      "totalItems": 2,
+      "user": {
+        "email": "jason@gmail.com",
+        "password": "@Jason123",
+        "addresses": [
+          {
+            "name": "jason Sharma",
+            "email": "jasonSharma@gmail.com",
+            "phone": "9876453210",
+            "street": "MadhavPura Near Pala bazar",
+            "city": "Dhule",
+            "state": "Maharashtra",
+            "pinCode": "424001"
+          }
+        ],
+        "role": "user",
+        "id": 2
+      },
+      "paymentMethod": "cash",
+      "selectedAddress": {
+        "name": "jason Sharma",
+        "email": "jasonSharma@gmail.com",
+        "phone": "9876453210",
+        "street": "MadhavPura Near Pala bazar",
+        "city": "Dhule",
+        "state": "Maharashtra",
+        "pinCode": "424001"
+      },
+      "status": "pending",
+      "id": 7
+    },
+    {
+      "items": [
+        {
+          "title": "Infinix INBOOK",
+          "description": "Infinix Inbook X1 Ci3 10th 8GB 256GB 14 Win10 Grey – 1 Year Warranty",
+          "price": 1099,
+          "discountPercentage": 11.83,
+          "rating": 4.54,
+          "stock": 96,
+          "brand": "Infinix",
+          "category": "laptops",
+          "thumbnail": "https://cdn.dummyjson.com/product-images/9/thumbnail.jpg",
+          "images": [
+            "https://cdn.dummyjson.com/product-images/9/1.jpg",
+            "https://cdn.dummyjson.com/product-images/9/2.png",
+            "https://cdn.dummyjson.com/product-images/9/3.png",
+            "https://cdn.dummyjson.com/product-images/9/4.jpg",
+            "https://cdn.dummyjson.com/product-images/9/thumbnail.jpg"
+          ],
+          "qty": 2,
+          "user": 2,
+          "itemUrl": "http://localhost:5173/product-details/9",
+          "id": 3
+        }
+      ],
+      "totalAmount": 1938,
+      "totalItems": 2,
+      "user": {
+        "email": "jason@gmail.com",
+        "password": "@Jason123",
+        "addresses": [
+          {
+            "name": "jason Sharma",
+            "email": "jasonSharma@gmail.com",
+            "phone": "9876453210",
+            "street": "MadhavPura Near Pala bazar",
+            "city": "Dhule",
+            "state": "Maharashtra",
+            "pinCode": "424001"
+          }
+        ],
+        "role": "user",
+        "id": 2
+      },
+      "paymentMethod": "cash",
+      "selectedAddress": {
+        "name": "jason Sharma",
+        "email": "jasonSharma@gmail.com",
+        "phone": "9876453210",
+        "street": "MadhavPura Near Pala bazar",
+        "city": "Dhule",
+        "state": "Maharashtra",
+        "pinCode": "424001"
+      },
+      "status": "pending",
+      "id": 7
+    },
+    {
+      "items": [
+        {
+          "title": "Infinix INBOOK",
+          "description": "Infinix Inbook X1 Ci3 10th 8GB 256GB 14 Win10 Grey – 1 Year Warranty",
+          "price": 1099,
+          "discountPercentage": 11.83,
+          "rating": 4.54,
+          "stock": 96,
+          "brand": "Infinix",
+          "category": "laptops",
+          "thumbnail": "https://cdn.dummyjson.com/product-images/9/thumbnail.jpg",
+          "images": [
+            "https://cdn.dummyjson.com/product-images/9/1.jpg",
+            "https://cdn.dummyjson.com/product-images/9/2.png",
+            "https://cdn.dummyjson.com/product-images/9/3.png",
+            "https://cdn.dummyjson.com/product-images/9/4.jpg",
+            "https://cdn.dummyjson.com/product-images/9/thumbnail.jpg"
+          ],
+          "qty": 2,
+          "user": 2,
+          "itemUrl": "http://localhost:5173/product-details/9",
+          "id": 3
+        }
+      ],
+      "totalAmount": 1938,
+      "totalItems": 2,
+      "user": {
+        "email": "jason@gmail.com",
+        "password": "@Jason123",
+        "addresses": [
+          {
+            "name": "jason Sharma",
+            "email": "jasonSharma@gmail.com",
+            "phone": "9876453210",
+            "street": "MadhavPura Near Pala bazar",
+            "city": "Dhule",
+            "state": "Maharashtra",
+            "pinCode": "424001"
+          }
+        ],
+        "role": "user",
+        "id": 2
+      },
+      "paymentMethod": "cash",
+      "selectedAddress": {
+        "name": "jason Sharma",
+        "email": "jasonSharma@gmail.com",
+        "phone": "9876453210",
+        "street": "MadhavPura Near Pala bazar",
+        "city": "Dhule",
+        "state": "Maharashtra",
+        "pinCode": "424001"
+      },
+      "status": "pending",
+      "id": 7
+    },
+    {
+      "items": [
+        {
+          "title": "Infinix INBOOK",
+          "description": "Infinix Inbook X1 Ci3 10th 8GB 256GB 14 Win10 Grey – 1 Year Warranty",
+          "price": 1099,
+          "discountPercentage": 11.83,
+          "rating": 4.54,
+          "stock": 96,
+          "brand": "Infinix",
+          "category": "laptops",
+          "thumbnail": "https://cdn.dummyjson.com/product-images/9/thumbnail.jpg",
+          "images": [
+            "https://cdn.dummyjson.com/product-images/9/1.jpg",
+            "https://cdn.dummyjson.com/product-images/9/2.png",
+            "https://cdn.dummyjson.com/product-images/9/3.png",
+            "https://cdn.dummyjson.com/product-images/9/4.jpg",
+            "https://cdn.dummyjson.com/product-images/9/thumbnail.jpg"
+          ],
+          "qty": 2,
+          "user": 2,
+          "itemUrl": "http://localhost:5173/product-details/9",
+          "id": 3
+        }
+      ],
+      "totalAmount": 1938,
+      "totalItems": 2,
+      "user": {
+        "email": "jason@gmail.com",
+        "password": "@Jason123",
+        "addresses": [
+          {
+            "name": "jason Sharma",
+            "email": "jasonSharma@gmail.com",
+            "phone": "9876453210",
+            "street": "MadhavPura Near Pala bazar",
+            "city": "Dhule",
+            "state": "Maharashtra",
+            "pinCode": "424001"
+          }
+        ],
+        "role": "user",
+        "id": 2
+      },
+      "paymentMethod": "cash",
+      "selectedAddress": {
+        "name": "jason Sharma",
+        "email": "jasonSharma@gmail.com",
+        "phone": "9876453210",
+        "street": "MadhavPura Near Pala bazar",
+        "city": "Dhule",
+        "state": "Maharashtra",
+        "pinCode": "424001"
+      },
+      "status": "pending",
+      "id": 7
+    },
+    {
+      "items": [
+        {
+          "title": "Infinix INBOOK",
+          "description": "Infinix Inbook X1 Ci3 10th 8GB 256GB 14 Win10 Grey – 1 Year Warranty",
+          "price": 1099,
+          "discountPercentage": 11.83,
+          "rating": 4.54,
+          "stock": 96,
+          "brand": "Infinix",
+          "category": "laptops",
+          "thumbnail": "https://cdn.dummyjson.com/product-images/9/thumbnail.jpg",
+          "images": [
+            "https://cdn.dummyjson.com/product-images/9/1.jpg",
+            "https://cdn.dummyjson.com/product-images/9/2.png",
+            "https://cdn.dummyjson.com/product-images/9/3.png",
+            "https://cdn.dummyjson.com/product-images/9/4.jpg",
+            "https://cdn.dummyjson.com/product-images/9/thumbnail.jpg"
+          ],
+          "qty": 2,
+          "user": 2,
+          "itemUrl": "http://localhost:5173/product-details/9",
+          "id": 3
+        }
+      ],
+      "totalAmount": 1938,
+      "totalItems": 2,
+      "user": {
+        "email": "jason@gmail.com",
+        "password": "@Jason123",
+        "addresses": [
+          {
+            "name": "jason Sharma",
+            "email": "jasonSharma@gmail.com",
+            "phone": "9876453210",
+            "street": "MadhavPura Near Pala bazar",
+            "city": "Dhule",
+            "state": "Maharashtra",
+            "pinCode": "424001"
+          }
+        ],
+        "role": "user",
+        "id": 2
+      },
+      "paymentMethod": "cash",
+      "selectedAddress": {
+        "name": "jason Sharma",
+        "email": "jasonSharma@gmail.com",
+        "phone": "9876453210",
+        "street": "MadhavPura Near Pala bazar",
+        "city": "Dhule",
+        "state": "Maharashtra",
+        "pinCode": "424001"
+      },
+      "status": "pending",
+      "id": 7
+    },
+    {
+      "items": [
+        {
+          "title": "Infinix INBOOK",
+          "description": "Infinix Inbook X1 Ci3 10th 8GB 256GB 14 Win10 Grey – 1 Year Warranty",
+          "price": 1099,
+          "discountPercentage": 11.83,
+          "rating": 4.54,
+          "stock": 96,
+          "brand": "Infinix",
+          "category": "laptops",
+          "thumbnail": "https://cdn.dummyjson.com/product-images/9/thumbnail.jpg",
+          "images": [
+            "https://cdn.dummyjson.com/product-images/9/1.jpg",
+            "https://cdn.dummyjson.com/product-images/9/2.png",
+            "https://cdn.dummyjson.com/product-images/9/3.png",
+            "https://cdn.dummyjson.com/product-images/9/4.jpg",
+            "https://cdn.dummyjson.com/product-images/9/thumbnail.jpg"
+          ],
+          "qty": 2,
+          "user": 2,
+          "itemUrl": "http://localhost:5173/product-details/9",
+          "id": 3
+        }
+      ],
+      "totalAmount": 1938,
+      "totalItems": 2,
+      "user": {
+        "email": "jason@gmail.com",
+        "password": "@Jason123",
+        "addresses": [
+          {
+            "name": "jason Sharma",
+            "email": "jasonSharma@gmail.com",
+            "phone": "9876453210",
+            "street": "MadhavPura Near Pala bazar",
+            "city": "Dhule",
+            "state": "Maharashtra",
+            "pinCode": "424001"
+          }
+        ],
+        "role": "user",
+        "id": 2
+      },
+      "paymentMethod": "cash",
+      "selectedAddress": {
+        "name": "jason Sharma",
+        "email": "jasonSharma@gmail.com",
+        "phone": "9876453210",
+        "street": "MadhavPura Near Pala bazar",
+        "city": "Dhule",
+        "state": "Maharashtra",
+        "pinCode": "424001"
+      },
+      "status": "pending",
+      "id": 7
+    },
+    {
+      "items": [
+        {
+          "title": "Infinix INBOOK",
+          "description": "Infinix Inbook X1 Ci3 10th 8GB 256GB 14 Win10 Grey – 1 Year Warranty",
+          "price": 1099,
+          "discountPercentage": 11.83,
+          "rating": 4.54,
+          "stock": 96,
+          "brand": "Infinix",
+          "category": "laptops",
+          "thumbnail": "https://cdn.dummyjson.com/product-images/9/thumbnail.jpg",
+          "images": [
+            "https://cdn.dummyjson.com/product-images/9/1.jpg",
+            "https://cdn.dummyjson.com/product-images/9/2.png",
+            "https://cdn.dummyjson.com/product-images/9/3.png",
+            "https://cdn.dummyjson.com/product-images/9/4.jpg",
+            "https://cdn.dummyjson.com/product-images/9/thumbnail.jpg"
+          ],
+          "qty": 2,
+          "user": 2,
+          "itemUrl": "http://localhost:5173/product-details/9",
+          "id": 3
+        }
+      ],
+      "totalAmount": 1938,
+      "totalItems": 2,
+      "user": {
+        "email": "jason@gmail.com",
+        "password": "@Jason123",
+        "addresses": [
+          {
+            "name": "jason Sharma",
+            "email": "jasonSharma@gmail.com",
+            "phone": "9876453210",
+            "street": "MadhavPura Near Pala bazar",
+            "city": "Dhule",
+            "state": "Maharashtra",
+            "pinCode": "424001"
+          }
+        ],
+        "role": "user",
+        "id": 2
+      },
+      "paymentMethod": "cash",
+      "selectedAddress": {
+        "name": "jason Sharma",
+        "email": "jasonSharma@gmail.com",
+        "phone": "9876453210",
+        "street": "MadhavPura Near Pala bazar",
+        "city": "Dhule",
+        "state": "Maharashtra",
+        "pinCode": "424001"
+      },
+      "status": "pending",
+      "id": 7
+    },
+    {
+      "items": [
+        {
+          "title": "Infinix INBOOK",
+          "description": "Infinix Inbook X1 Ci3 10th 8GB 256GB 14 Win10 Grey – 1 Year Warranty",
+          "price": 1099,
+          "discountPercentage": 11.83,
+          "rating": 4.54,
+          "stock": 96,
+          "brand": "Infinix",
+          "category": "laptops",
+          "thumbnail": "https://cdn.dummyjson.com/product-images/9/thumbnail.jpg",
+          "images": [
+            "https://cdn.dummyjson.com/product-images/9/1.jpg",
+            "https://cdn.dummyjson.com/product-images/9/2.png",
+            "https://cdn.dummyjson.com/product-images/9/3.png",
+            "https://cdn.dummyjson.com/product-images/9/4.jpg",
+            "https://cdn.dummyjson.com/product-images/9/thumbnail.jpg"
+          ],
+          "qty": 2,
+          "user": 2,
+          "itemUrl": "http://localhost:5173/product-details/9",
+          "id": 3
+        }
+      ],
+      "totalAmount": 1938,
+      "totalItems": 2,
+      "user": {
+        "email": "jason@gmail.com",
+        "password": "@Jason123",
+        "addresses": [
+          {
+            "name": "jason Sharma",
+            "email": "jasonSharma@gmail.com",
+            "phone": "9876453210",
+            "street": "MadhavPura Near Pala bazar",
+            "city": "Dhule",
+            "state": "Maharashtra",
+            "pinCode": "424001"
+          }
+        ],
+        "role": "user",
+        "id": 2
+      },
+      "paymentMethod": "cash",
+      "selectedAddress": {
+        "name": "jason Sharma",
+        "email": "jasonSharma@gmail.com",
+        "phone": "9876453210",
+        "street": "MadhavPura Near Pala bazar",
+        "city": "Dhule",
+        "state": "Maharashtra",
+        "pinCode": "424001"
+      },
+      "status": "pending",
+      "id": 7
+    },
+    {
+      "items": [
+        {
+          "title": "Infinix INBOOK",
+          "description": "Infinix Inbook X1 Ci3 10th 8GB 256GB 14 Win10 Grey – 1 Year Warranty",
+          "price": 1099,
+          "discountPercentage": 11.83,
+          "rating": 4.54,
+          "stock": 96,
+          "brand": "Infinix",
+          "category": "laptops",
+          "thumbnail": "https://cdn.dummyjson.com/product-images/9/thumbnail.jpg",
+          "images": [
+            "https://cdn.dummyjson.com/product-images/9/1.jpg",
+            "https://cdn.dummyjson.com/product-images/9/2.png",
+            "https://cdn.dummyjson.com/product-images/9/3.png",
+            "https://cdn.dummyjson.com/product-images/9/4.jpg",
+            "https://cdn.dummyjson.com/product-images/9/thumbnail.jpg"
+          ],
+          "qty": 2,
+          "user": 2,
+          "itemUrl": "http://localhost:5173/product-details/9",
+          "id": 3
+        }
+      ],
+      "totalAmount": 1938,
+      "totalItems": 2,
+      "user": {
+        "email": "jason@gmail.com",
+        "password": "@Jason123",
+        "addresses": [
+          {
+            "name": "jason Sharma",
+            "email": "jasonSharma@gmail.com",
+            "phone": "9876453210",
+            "street": "MadhavPura Near Pala bazar",
+            "city": "Dhule",
+            "state": "Maharashtra",
+            "pinCode": "424001"
+          }
+        ],
+        "role": "user",
+        "id": 2
+      },
+      "paymentMethod": "cash",
+      "selectedAddress": {
+        "name": "jason Sharma",
+        "email": "jasonSharma@gmail.com",
+        "phone": "9876453210",
+        "street": "MadhavPura Near Pala bazar",
+        "city": "Dhule",
+        "state": "Maharashtra",
+        "pinCode": "424001"
+      },
+      "status": "pending",
+      "id": 7
+    },
+    {
+      "items": [
+        {
+          "title": "Infinix INBOOK",
+          "description": "Infinix Inbook X1 Ci3 10th 8GB 256GB 14 Win10 Grey – 1 Year Warranty",
+          "price": 1099,
+          "discountPercentage": 11.83,
+          "rating": 4.54,
+          "stock": 96,
+          "brand": "Infinix",
+          "category": "laptops",
+          "thumbnail": "https://cdn.dummyjson.com/product-images/9/thumbnail.jpg",
+          "images": [
+            "https://cdn.dummyjson.com/product-images/9/1.jpg",
+            "https://cdn.dummyjson.com/product-images/9/2.png",
+            "https://cdn.dummyjson.com/product-images/9/3.png",
+            "https://cdn.dummyjson.com/product-images/9/4.jpg",
+            "https://cdn.dummyjson.com/product-images/9/thumbnail.jpg"
+          ],
+          "qty": 2,
+          "user": 2,
+          "itemUrl": "http://localhost:5173/product-details/9",
+          "id": 3
+        }
+      ],
+      "totalAmount": 1938,
+      "totalItems": 2,
+      "user": {
+        "email": "jason@gmail.com",
+        "password": "@Jason123",
+        "addresses": [
+          {
+            "name": "jason Sharma",
+            "email": "jasonSharma@gmail.com",
+            "phone": "9876453210",
+            "street": "MadhavPura Near Pala bazar",
+            "city": "Dhule",
+            "state": "Maharashtra",
+            "pinCode": "424001"
+          }
+        ],
+        "role": "user",
+        "id": 2
+      },
+      "paymentMethod": "cash",
+      "selectedAddress": {
+        "name": "jason Sharma",
+        "email": "jasonSharma@gmail.com",
+        "phone": "9876453210",
+        "street": "MadhavPura Near Pala bazar",
+        "city": "Dhule",
+        "state": "Maharashtra",
+        "pinCode": "424001"
+      },
+      "status": "pending",
+      "id": 7
+    },
+    {
+      "items": [
+        {
+          "title": "Infinix INBOOK",
+          "description": "Infinix Inbook X1 Ci3 10th 8GB 256GB 14 Win10 Grey – 1 Year Warranty",
+          "price": 1099,
+          "discountPercentage": 11.83,
+          "rating": 4.54,
+          "stock": 96,
+          "brand": "Infinix",
+          "category": "laptops",
+          "thumbnail": "https://cdn.dummyjson.com/product-images/9/thumbnail.jpg",
+          "images": [
+            "https://cdn.dummyjson.com/product-images/9/1.jpg",
+            "https://cdn.dummyjson.com/product-images/9/2.png",
+            "https://cdn.dummyjson.com/product-images/9/3.png",
+            "https://cdn.dummyjson.com/product-images/9/4.jpg",
+            "https://cdn.dummyjson.com/product-images/9/thumbnail.jpg"
+          ],
+          "qty": 2,
+          "user": 2,
+          "itemUrl": "http://localhost:5173/product-details/9",
+          "id": 3
+        }
+      ],
+      "totalAmount": 1938,
+      "totalItems": 2,
+      "user": {
+        "email": "jason@gmail.com",
+        "password": "@Jason123",
+        "addresses": [
+          {
+            "name": "jason Sharma",
+            "email": "jasonSharma@gmail.com",
+            "phone": "9876453210",
+            "street": "MadhavPura Near Pala bazar",
+            "city": "Dhule",
+            "state": "Maharashtra",
+            "pinCode": "424001"
+          }
+        ],
+        "role": "user",
+        "id": 2
+      },
+      "paymentMethod": "cash",
+      "selectedAddress": {
+        "name": "jason Sharma",
+        "email": "jasonSharma@gmail.com",
+        "phone": "9876453210",
+        "street": "MadhavPura Near Pala bazar",
+        "city": "Dhule",
+        "state": "Maharashtra",
+        "pinCode": "424001"
+      },
+      "status": "pending",
+      "id": 7
+    },
+    {
+      "items": [
+        {
+          "title": "Infinix INBOOK",
+          "description": "Infinix Inbook X1 Ci3 10th 8GB 256GB 14 Win10 Grey – 1 Year Warranty",
+          "price": 1099,
+          "discountPercentage": 11.83,
+          "rating": 4.54,
+          "stock": 96,
+          "brand": "Infinix",
+          "category": "laptops",
+          "thumbnail": "https://cdn.dummyjson.com/product-images/9/thumbnail.jpg",
+          "images": [
+            "https://cdn.dummyjson.com/product-images/9/1.jpg",
+            "https://cdn.dummyjson.com/product-images/9/2.png",
+            "https://cdn.dummyjson.com/product-images/9/3.png",
+            "https://cdn.dummyjson.com/product-images/9/4.jpg",
+            "https://cdn.dummyjson.com/product-images/9/thumbnail.jpg"
+          ],
+          "qty": 2,
+          "user": 2,
+          "itemUrl": "http://localhost:5173/product-details/9",
+          "id": 3
+        }
+      ],
+      "totalAmount": 1938,
+      "totalItems": 2,
+      "user": {
+        "email": "jason@gmail.com",
+        "password": "@Jason123",
+        "addresses": [
+          {
+            "name": "jason Sharma",
+            "email": "jasonSharma@gmail.com",
+            "phone": "9876453210",
+            "street": "MadhavPura Near Pala bazar",
+            "city": "Dhule",
+            "state": "Maharashtra",
+            "pinCode": "424001"
+          }
+        ],
+        "role": "user",
+        "id": 2
+      },
+      "paymentMethod": "cash",
+      "selectedAddress": {
+        "name": "jason Sharma",
+        "email": "jasonSharma@gmail.com",
+        "phone": "9876453210",
+        "street": "MadhavPura Near Pala bazar",
+        "city": "Dhule",
+        "state": "Maharashtra",
+        "pinCode": "424001"
+      },
+      "status": "pending",
+      "id": 7
     }
   ]
 }

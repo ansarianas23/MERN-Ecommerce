@@ -4,6 +4,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { deleteItemFromCartAsync, selectedCartItems, updateCartAsync } from "./CartSlice";
 import { selectLoggedInUser } from "../auth/authSlice";
 import { selectUserInfo } from "../user/UserSlice";
+import { discountedPrice } from "../../utils/constants";
 
 
 const Cart = () => {
@@ -12,7 +13,7 @@ const Cart = () => {
   const user = useSelector(selectUserInfo);
 
   const cartTotalValue = cart?.reduce((total, item)=>{
-    return total + item.price * item.qty;
+    return total + discountedPrice(item) * item.qty;
   },0);
 
   const totalItems = cart?.reduce((total, item)=>{
@@ -53,7 +54,10 @@ const Cart = () => {
                         <h3>
                           <a target="_blank" href={item.itemUrl}>{item.title}</a>
                         </h3>
-                        <p className="ml-4">${item.price}</p>
+                        <div>
+                          <p className="ml-4">${discountedPrice(item)}</p>
+                          <p className="ml-4 text-sm text-gray-500 line-through">${item.price}</p>
+                        </div>
                       </div>
                       <p className="mt-1 text-sm text-gray-500">
                         {item.color}
