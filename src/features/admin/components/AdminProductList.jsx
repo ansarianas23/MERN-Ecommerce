@@ -5,10 +5,10 @@ import { Dialog, Disclosure, Menu, Transition } from "@headlessui/react";
 import { XMarkIcon } from "@heroicons/react/24/outline";
 import {ChevronDownIcon, FunnelIcon, MinusIcon, PlusIcon, Squares2X2Icon, ChevronLeftIcon, ChevronRightIcon} from "@heroicons/react/20/solid";
 import { Link } from "react-router-dom";
-import {fetchAllProductCountAsync, fetchBrandsAsync, fetchCategoriesAsync, fetchProductsByFiltersAsync, selectAllBrands, selectAllCategories, selectAllProducts, selectAllProductsTotalItems} from "../ProductSlice";
-import { sortOptions } from "../../../utils/utility";
+import {fetchAllProductCountAsync, fetchBrandsAsync, fetchCategoriesAsync, fetchProductsByFiltersAsync, selectAllBrands, selectAllCategories, selectAllProducts, selectAllProductsTotalItems} from "../../product/ProductSlice";
 import { ITEMS_PER_PAGE } from "../../../utils/constants";
 import AdminProduct from "./AdminProduct";
+import { sortOptions } from "../../../utils/utility";
 
 function classNames(...classes) {
   return classes.filter(Boolean).join(" ");
@@ -192,11 +192,25 @@ const ProductGrid = ({ products }) => {
     <div className="lg:col-span-3">
       <div className="bg-white">
         <div className="mx-auto max-w-2xl px-4 py-0 sm:px-6 sm:py-0 lg:max-w-7xl lg:px-8">
+        
+        {/* Add Product Button */}
+        <Link to='/admin/product-form'>
+          <button className="rounded-md bg-green-600 px-3 py-2 text-sm font-semibold text-white shadow-sm hover:bg-green-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600">Add New Product</button>
+        </Link>
+
           <div className="mt-6 grid grid-cols-1 gap-x-6 gap-y-10 sm:grid-cols-2 lg:grid-cols-3 xl:gap-x-8">
-            {products?.data?.map((product) => (
-              <Link to={`/product-details/${product?.id}`} key={product?.id}>
-                <AdminProduct data={product} />
-              </Link>
+            {products?.map((product) => (
+              <div key={product?.id}>
+                <Link to={`/admin/product-details/${product?.id}`} >
+                  <AdminProduct data={product} />
+                </Link>
+                
+                <div className="flex justify-between">
+                  <Link to={`/product-form/edit/${product?.id}`}>
+                    <button className="mt-3 rounded-md bg-indigo-600 px-3 py-2 text-sm font-semibold text-white shadow-sm hover:bg-indigo-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600">Edit</button>
+                  </Link>
+                </div>
+              </div>
             ))}
           </div>
         </div>

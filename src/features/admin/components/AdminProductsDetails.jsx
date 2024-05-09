@@ -3,7 +3,7 @@ import { useState } from 'react'
 import { StarIcon } from '@heroicons/react/20/solid'
 import { RadioGroup } from '@headlessui/react'
 import { useDispatch, useSelector } from "react-redux";
-import { fetchProductByIdAsync, selectProduct } from "../AdminSlice";
+import { fetchProductByIdAsync, selectProduct } from "../../product/ProductSlice";
 import { useParams } from "react-router-dom";
 import { addToCartAsync } from "../../cart/CartSlice";
 import { selectLoggedInUser } from "../../auth/authSlice";
@@ -37,7 +37,7 @@ function classNames(...classes) {
 }
 
 
-const ProductDetails = () => {
+const AdminProductDetails = () => {
     const [selectedColor, setSelectedColor] = useState(colors[0]);
     const [selectedSize, setSelectedSize] = useState(sizes[2]);
 
@@ -290,4 +290,4 @@ const ProductDetails = () => {
   );
 };
 
-export default ProductDetails;
+export default AdminProductDetails;

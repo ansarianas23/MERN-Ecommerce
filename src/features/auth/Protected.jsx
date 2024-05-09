@@ -3,9 +3,9 @@ import { Navigate } from 'react-router-dom'
 import { selectLoggedInUser } from './authSlice'
 import { selectUserInfo } from '../user/UserSlice';
 
-const ProtectedRoute = ({chidlren}) => {
+const Protected = ({ chidlren }) => {
 
-    const user = useSelector(selectUserInfo);
+    const user = useSelector(selectLoggedInUser);
 
     if(!user){
         return <Navigate to="/login" replace={true}></Navigate>
@@ -14,4 +14,4 @@ const ProtectedRoute = ({chidlren}) => {
     return chidlren;
 }
 
-export default ProtectedRoute;
+export default Protected;

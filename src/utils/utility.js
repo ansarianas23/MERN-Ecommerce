@@ -8,9 +8,10 @@ export const sortOptions = [
 
 // navbar navigation menus
 export const navigation = [
-  { name: 'Home', href: '/', current: true },
-  { name: 'About', href: '/about', current: false },
-  { name: 'Help', href: '/help', current: false },
+  { name: 'Home', link: '/', user: true },
+  { name: 'About', link: '/about', user: true },
+  { name: 'Help', link: '/help', user: true },
+  { name: 'Admin', link: '/admin', admin: true },
 ]
 
 // navbar user navigation menus

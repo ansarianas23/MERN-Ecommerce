@@ -6,11 +6,12 @@ import { selectUserInfo } from '../user/UserSlice';
 const ProtectedAdmin = ({chidlren}) => {
 
     const user = useSelector(selectLoggedInUser);
+    const userInfo = useSelector(selectUserInfo)
 
     if(!user){
         return <Navigate to="/login" replace={true}></Navigate>
     }
-    if(user && user[0]?.role !== 'admin'){
+    if(userInfo && userInfo.role !== 'admin'){
         return <Navigate to="/" replace={true}></Navigate>
     }
 

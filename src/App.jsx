@@ -17,88 +17,122 @@ import { fetchLoggedinUserAsync } from "./features/user/UserSlice";
 import LogOut from "./features/auth/components/LogOut";
 import ForgotPasswordPage from "./pages/ForgotPasswordPage";
 import ProtectedAdmin from "./features/auth/ProtectedAdmin";
+import AdminHomePage from "./pages/AdminHomePage";
+import AdminProductDetailsPage from "./pages/AdminProductDetailsPage";
+import Protected from "./features/auth/Protected";
+import AdminProductFormPage from "./pages/AdminProductFormPage";
 
 const router = createBrowserRouter([
   {
     path: "/",
     element: (
-      // <ProtectedRoute>
-      <HomePage />
-      // </ProtectedRoute>
-    ),
-  },
-  {
-    path: "/login",
-    element: <LoginPage />,
-  },
-  {
-    path: "/signup",
-    element: <SignUpPage />,
-  },
-  {
-    path: "/cart",
-    element: (
-      // <ProtectedRoute>
-      <CartPage />
-      // </ProtectedRoute>
-    ),
-  },
-  {
-    path: "/checkout",
-    element: (
-      // <ProtectedRoute>
-      <CheckoutPage />
-      // </ProtectedRoute>
-    ),
-  },
-  {
-    path: "/product-details/:id",
-    element: (
-      // <ProtectedRoute>
-      <ProductDetailsPage />
-      // </ProtectedRoute>
-    ),
-  },
-  {
-    path: "/orderSuccess/:id",
-    element: (
-      <OrderSuccessPage />
-    ),
-  },
-  {
-    path: "/orders",
-    element: (
-      <MyOrdersPage />
-    ),
-  },
-  {
-    path: "/profile",
-    element: (
-      <UserProfilePage />
-    ),
-  },
-  {
-    path: "/logout",
-    element: (
-      <LogOut />
-    ),
-  },
-  {
-    path: "/forgot-password",
-    element: (
-      <ForgotPasswordPage />
+        <HomePage></HomePage>
     ),
   },
   {
     path: "/admin",
     element: (
-      <ProtectedAdmin />
+      // <ProtectedAdmin>
+        <AdminHomePage/>
+      // </ProtectedAdmin>
+    ),
+  },
+  {
+    path: "/login",
+    element: <LoginPage></LoginPage >,
+  },
+  {
+    path: "/signup",
+    element: <SignUpPage></SignUpPage >,
+  },
+  {
+    path: "/cart",
+    element: (
+      // <Protected>
+        <CartPage></CartPage>
+      // </Protected>
+    ),
+  },
+  {
+    path: "/checkout",
+    element: (
+      // <Protected>
+        <CheckoutPage></CheckoutPage>
+      // </Protected>
+    ),
+  },
+  {
+    path: "/product-details/:id",
+    element: (
+      // <Protected>
+        <ProductDetailsPage></ProductDetailsPage>
+      // </Protected>
+    ),
+  },
+  {
+    path: "admin/product-details/:id",
+    element: (
+      // <ProtectedAdmin>
+        <AdminProductDetailsPage></AdminProductDetailsPage>
+      // </ProtectedAdmin>
+    ),
+  },
+  {
+    path: "admin/product-form",
+    element: (
+      // <ProtectedAdmin>
+        <AdminProductFormPage></AdminProductFormPage>
+      // </ProtectedAdmin>
+    ),
+  },
+  {
+    path: "/product-form/edit/:id",
+    element: (
+      // <ProtectedAdmin>
+        <AdminProductFormPage></AdminProductFormPage>
+      // </ProtectedAdmin>
+    ),
+  },
+  {
+    path: "/orderSuccess/:id",
+    element: (
+      // <Protected>
+        <OrderSuccessPage></OrderSuccessPage>
+      // </Protected>
+    ),
+  },
+  {
+    path: "/orders",
+    element: (
+      // <Protected>
+        <MyOrdersPage></MyOrdersPage>
+      // </Protected>
+    ),
+  },
+  {
+    path: "/profile",
+    element: (
+      // <Protected>
+        <UserProfilePage></UserProfilePage>
+      // </Protected>
+    ),
+  },
+  {
+    path: "/logout",
+    element: (
+      <LogOut></LogOut>
+    ),
+  },
+  {
+    path: "/forgot-password",
+    element: (
+      <ForgotPasswordPage></ForgotPasswordPage>
     ),
   },
   {
     path: "*",
     element: (
-      <PageNotFound />  // always put this route at the end so if no path matches this will show
+      <PageNotFound></PageNotFound>  // always put this route at the end so if no path matches this will show
     ),
   },
 ]);

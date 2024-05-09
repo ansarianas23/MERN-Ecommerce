@@ -10,7 +10,7 @@ const LogOut = () => {
     
     useEffect(()=>{
         dispatch(signOutUserAsync());
-    });
+    },[]);
 
   return (
     <>
