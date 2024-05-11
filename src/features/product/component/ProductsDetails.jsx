@@ -5,9 +5,10 @@ import { RadioGroup } from '@headlessui/react'
 import { useDispatch, useSelector } from "react-redux";
 import { fetchProductByIdAsync, selectProduct } from "../ProductSlice";
 import { useParams } from "react-router-dom";
-import { addToCartAsync } from "../../cart/CartSlice";
+import { addToCartAsync, selectedCartItems } from "../../cart/CartSlice";
 import { selectLoggedInUser } from "../../auth/authSlice";
 import { discountedPrice } from "../../../utils/constants";
+import { useAlert } from "react-alert";
 
 const colors = [
     { name: 'White', class: 'bg-white', selectedClass: 'ring-gray-400' },
@@ -46,14 +47,21 @@ const ProductDetails = () => {
     const product = useSelector(selectProduct);
     const { id } = useParams();
     const user = useSelector(selectLoggedInUser);
+    const cart = useSelector(selectedCartItems);
+    const alert = useAlert();
 
     let fullUrl = window.location.href;
 
     const handleCart = (e)=>{
       e.preventDefault();
-      const newItem = {...product, qty:1, user:user[0]?.id, itemUrl: fullUrl}
-      delete newItem['id'];
-      dispatch(addToCartAsync(newItem));
+      if(cart.findIndex((item)=>item.productId === product.id)<0){
+        const newItem = {...product, qty:1, productId:product.id, user:user[0]?.id, itemUrl: fullUrl}
+        delete newItem['id'];
+        dispatch(addToCartAsync(newItem));
+        alert.success("Item Added in cart");
+      }else{
+        alert.show("Item Already added in cart");
+      }
     }
 
     useEffect(()=>{
@@ -246,9 +254,12 @@ const ProductDetails = () => {
                 </RadioGroup>
               </div>
 
-              <button onClick={handleCart} className="mt-10 flex w-full items-center justify-center rounded-md border border-transparent bg-indigo-600 px-8 py-3 text-base font-medium text-white hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2">
+              {product?.stock>=1 && <button onClick={handleCart} className="mt-10 flex w-full items-center justify-center rounded-md border border-transparent bg-indigo-600 px-8 py-3 text-base font-medium text-white hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2">
                 Add to Cart
-              </button>
+              </button>}
+              {product?.stock<=0 && <div className="cursor-pointer mt-10 flex w-full items-center justify-center rounded-md border border-transparent bg-gray-400 px-8 py-3 text-base font-medium text-white hover:bg-gray-500 focus:outline-none focus:ring-2 focus:ring-offset-2">
+                Out of Stock
+              </div>}
             </form>
           </div>
 

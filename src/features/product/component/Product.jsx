@@ -4,7 +4,7 @@ import { discountedPrice } from "../../../utils/constants";
 
 const Product = ({data}) => {
 
-    const { id, title, description, price, discountPercentage, rating, thumbnail } = data;
+    const { id, title, description, price, discountPercentage, rating, thumbnail, stock } = data;
     
   return (
     <div className="group relative border p-2 rounded-md">
@@ -29,6 +29,7 @@ const Product = ({data}) => {
           <p className="text-sm font-medium text-gray-400 line-through ">$ {price}</p>
         </div>
       </div>
+      {stock <=0 && <p className="text-sm font-medium text-red-600">Out of Stock</p>}
     </div>
   );
 };

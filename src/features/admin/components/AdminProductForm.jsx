@@ -87,6 +87,8 @@ const AdminProductForm = () => {
       <div className="border-b border-gray-900/10 pb-12 p-12">
         <h2 className="text-base font-semibold leading-7 text-gray-900">Add product</h2>
 
+        {selectedProduct?.deleted ? <p className='text-red-600'>This product is deleted</p> : null}
+
         <div className="mt-10 grid grid-cols-1 gap-x-6 gap-y-8 sm:grid-cols-6">
 
           <div className="sm:col-span-full">

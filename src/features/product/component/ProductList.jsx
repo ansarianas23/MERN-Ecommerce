@@ -6,10 +6,11 @@ import { XMarkIcon } from "@heroicons/react/24/outline";
 import {ChevronDownIcon, FunnelIcon, MinusIcon, PlusIcon, Squares2X2Icon, ChevronLeftIcon, ChevronRightIcon} from "@heroicons/react/20/solid";
 import Product from "../component/Product";
 import { Link } from "react-router-dom";
-import {fetchAllProductCountAsync, fetchBrandsAsync, fetchCategoriesAsync, fetchProductsByFiltersAsync, selectAllBrands, selectAllCategories, selectAllProducts, selectAllProductsTotalItems} from "../ProductSlice";
+import {fetchAllProductCountAsync, fetchBrandsAsync, fetchCategoriesAsync, fetchProductsByFiltersAsync, selectAllBrands, selectAllCategories, selectAllProducts, selectAllProductsTotalItems, selectProductStatus} from "../ProductSlice";
 import { sortOptions } from "../../../utils/utility";
 import { ITEMS_PER_PAGE } from "../../../utils/constants";
 import Pagination from "../../common/Pagination";
+import { ColorRing, Grid } from "react-loader-spinner";
 
 function classNames(...classes) {
   return classes.filter(Boolean).join(" ");
@@ -27,7 +28,7 @@ const ProductList = () => {
   const totalItems = useSelector(selectAllProductsTotalItems);
   const brands = useSelector(selectAllBrands);
   const categories = useSelector(selectAllCategories);
-  // const totalItems = 100;
+  const status = useSelector(selectProductStatus);
 
   const filters = [
     {
@@ -88,7 +89,7 @@ const ProductList = () => {
 
   return (
     <>
-      <div className="bg-white">
+      <div className="bg-white"> 
         <div>
           {/* Mobile filter dialog Component */}
           <MobileFilter
@@ -171,7 +172,7 @@ const ProductList = () => {
                 <DesktopFilter filters={filters} handleFilter={handleFilter}></DesktopFilter>
 
                 {/* Product grid Component */}
-                <ProductGrid filters={filters} products={products}></ProductGrid>
+                <ProductGrid filters={filters} products={products} status={status}></ProductGrid>
               </div>
             </section>
 
@@ -186,13 +187,27 @@ const ProductList = () => {
 
 export default ProductList;
 
-const ProductGrid = ({ products }) => {
+const ProductGrid = ({ products, status }) => {
+
+  const filteredData = products.filter((product)=> product.deleted !== true);
+  // this is done because some products are with deleted flag in the api so we are not showing them to user only visible to admin.
+  // in api deleted products are also there thats why we are filtering them.
+
   return (
-    <div className="lg:col-span-3">
+    <div className="lg:col-span-3">      
       <div className="bg-white">
         <div className="mx-auto max-w-2xl px-4 py-0 sm:px-6 sm:py-0 lg:max-w-7xl lg:px-8">
           <div className="mt-6 grid grid-cols-1 gap-x-6 gap-y-10 sm:grid-cols-2 lg:grid-cols-3 xl:gap-x-8">
-            {products?.map((product) => (
+            {status === 'loading'? <ColorRing
+            visible={true}
+            height="80"
+            width="80"
+            ariaLabel="color-ring-loading"
+            wrapperStyle={{}}
+            wrapperClass="color-ring-wrapper"
+            colors={['#e15b64', '#f47e60', '#f8b26a', '#abbd81', '#849b87']}
+            />: null}
+            {filteredData?.map((product) => (
               <Link to={`/product-details/${product?.id}`} key={product?.id}>
                 <Product data={product} />
               </Link>
