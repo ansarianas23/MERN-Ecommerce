@@ -164,8 +164,8 @@ function App() {
   // loading user cart
   useEffect(()=>{
     if(user){
-      dispatch(fetchItemsByUserIdAsync(user[0]?.id));
-      dispatch(fetchLoggedinUserAsync(user[0]?.id));
+      dispatch(fetchItemsByUserIdAsync(user.id));
+      dispatch(fetchLoggedinUserAsync(user.id));
     }
   },[dispatch, user]);
 

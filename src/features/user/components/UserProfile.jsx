@@ -38,8 +38,8 @@ const UserProfile = () => {
   }
 
   const handleAdd = (address)=>{
-    let newUser = {...user, addresses:[...user.addresses, address]} // for shallow copy issues
-    dispatch(updateUserAsync(newUser));
+    let update = {...user, addresses:[...user.addresses, address]} // for shallow copy issues
+    dispatch(updateUserAsync(update));
     setShowAddAddressForm(false);
   }
 
@@ -47,7 +47,7 @@ const UserProfile = () => {
     <div className="mx-auto bg-white max-w-7xl px-4 sm:px-0 lg:px-0">
       <div className="px-4 py-3 sm:px-6 space-y-3">
         <h1 className="text-xl font-bold tracking-tight">
-          Name : {user?.name ? user?.name: 'New User'}
+          Name : {user?.name ? user.name: 'New User'}
         </h1>
         <h3 className="text-xl font-bold tracking-tight text-red-900">
           Email Address : {user?.email}

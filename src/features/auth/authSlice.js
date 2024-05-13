@@ -18,10 +18,13 @@ export const createUserAsync = createAsyncThunk(
 
 export const loginUserAsync = createAsyncThunk(
     'auth/loginUser',
-    async (loginInfo)=>{
-        const response  = await loginUser(loginInfo);
-        // console.log('login response from auth API', response);
-        return response;
+    async (loginInfo, {rejectWithValue})=>{
+        try {
+            const response  = await loginUser(loginInfo);
+            return response;
+        } catch (error) {
+            return rejectWithValue(error)
+        }
     }
 )
 
@@ -55,7 +58,7 @@ export const authSlice = createSlice({
         })
         .addCase(loginUserAsync.rejected, (state, action)=>{
             state.status = 'idle'
-            state.error = action.error;
+            state.error = action.payload;
         })
         .addCase(signOutUserAsync.pending, (state)=>{
             state.status = 'loading'
