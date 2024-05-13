@@ -1,6 +1,6 @@
 export function fetchAllProductsCount(){
     return new Promise(async (resolve)=>{
-        const response = await fetch('http://localhost:3000/products');
+        const response = await fetch('http://localhost:8080/products');
         const data = await response.json();
         resolve(data.length);
     })
@@ -9,7 +9,7 @@ export function fetchAllProductsCount(){
 // To fetch a single product by specific id
 export function fetchProductById(id){
     return new Promise(async (resolve)=>{
-        const response = await fetch(`http://localhost:3000/products?id=${+id}`);
+        const response = await fetch(`http://localhost:8080/products?id=${+id}`);
         const data = await response.json();
         resolve(data[0]);
     })
@@ -18,7 +18,7 @@ export function fetchProductById(id){
 // To create a single product by admin
 export function createProduct(product){
     return new Promise(async (resolve)=>{
-        const response = await fetch('http://localhost:3000/products',{
+        const response = await fetch('http://localhost:8080/products',{
             method: 'POST',
             body: JSON.stringify(product),
             headers: {'content-type': 'application/json'}
@@ -31,7 +31,7 @@ export function createProduct(product){
 // update product
 export function updateProduct(update){
     return new Promise(async (resolve)=>{
-        const response = await fetch('http://localhost:3000/products/'+update.id, {
+        const response = await fetch('http://localhost:8080/products/'+update.id, {
             method: 'PATCH',
             body: JSON.stringify(update),
             headers: {'content-type': 'application/json'}
@@ -71,7 +71,7 @@ export function fetchProductsByFilters(filter, sort, pagination){
     }
 
     return new Promise(async (resolve)=>{
-        const response = await fetch(`http://localhost:3000/products?${queryString}`);
+        const response = await fetch(`http://localhost:8080/products?${queryString}`);
         const data = await response.json();
         resolve({data});
     })
@@ -80,7 +80,7 @@ export function fetchProductsByFilters(filter, sort, pagination){
 
 export function fetchBrands(){
     return new Promise(async (resolve)=>{
-        const response = await fetch('http://localhost:3000/brands');
+        const response = await fetch('http://localhost:8080/brands');
         const data = await response.json();
         resolve(data);
     })
@@ -89,7 +89,7 @@ export function fetchBrands(){
 
 export function fetchCategories(){
     return new Promise(async (resolve)=>{
-        const response = await fetch('http://localhost:3000/categories');
+        const response = await fetch('http://localhost:8080/categories');
         const data = await response.json();
         resolve(data);
     })
