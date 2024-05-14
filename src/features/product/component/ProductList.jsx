@@ -177,7 +177,9 @@ const ProductList = () => {
             </section>
 
             {/* Pagination component */}
-            <Pagination handlePgination={handlePgination} totalItems={totalItems} page={page} setPage={setPage}></Pagination>
+            <div className="border-t-[1px] border-gray-200">
+              <Pagination handlePgination={handlePgination} totalItems={totalItems} page={page} setPage={setPage}></Pagination>
+            </div>
           </main>
         </div>
       </div>

@@ -73,7 +73,7 @@ const AdminProductList = () => {
 
   useEffect(() => {
     const pagination = {_page:page, _limit:ITEMS_PER_PAGE}
-    dispatch(fetchProductsByFiltersAsync({filter, sort, pagination}));
+    dispatch(fetchProductsByFiltersAsync({filter, sort, pagination, admin:true}));
     dispatch(fetchAllProductCountAsync());
   }, [dispatch, filter,sort, page]);
 
@@ -176,7 +176,9 @@ const AdminProductList = () => {
             </section>
 
             {/* Pagination component */}
-            <Pagination handlePgination={handlePgination} totalItems={totalItems} page={page} setPage={setPage}></Pagination>
+            <div className="border-t-[1px] border-gray-200">
+              <Pagination handlePgination={handlePgination} totalItems={totalItems} page={page} setPage={setPage}></Pagination>
+            </div>
           </main>
         </div>
       </div>

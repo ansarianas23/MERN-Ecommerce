@@ -3,6 +3,7 @@ import { useDispatch, useSelector } from 'react-redux'
 import { fetchAllOrdersAsync, fetchAllOrdersCountAsync, selectAllOrders, selectAllOrdersCounts, updateOrderAsync } from '../../order/orderSlice';
 import {ChevronLeftIcon, ChevronRightIcon, EyeIcon, PencilIcon, PencilSquareIcon} from "@heroicons/react/20/solid";
 import { ITEMS_PER_PAGE, discountedPrice } from '../../../utils/constants';
+import Pagination from '../../common/Pagination';
 import { Link } from 'react-router-dom';
 
 const AdminOrders = () => {
@@ -28,7 +29,7 @@ const AdminOrders = () => {
     }
 
     const handleShow = (e, order)=>{
-      console.log(order);
+      console.log("show");
     }
 
     const handleUpdate = (e, order)=>{
@@ -67,12 +68,16 @@ const AdminOrders = () => {
 
             <thead>
               <tr className="bg-gray-200 text-gray-600 uppercase text-sm leading-normal">
-                <th className="py-3 px-6 text-left">Order Number</th>
+                <th className="py-3 px-6 text-left">Order#</th>
+                <th className='border-l-[1px] border-gray-300'/>
                 <th className="py-3 px-6 text-left">Items & Price</th>
-                <th className="py-3 px-6 text-center">Quantity</th>
+                <th className='border-l-[1px] border-gray-300'/>
                 <th className="py-3 px-6 text-center">Total Amount</th>
+                <th className='border-l-[1px] border-gray-300'/>
                 <th className="py-3 px-6 text-center">Shipping Address</th>
+                <th className='border-l-[1px] border-gray-300'/>
                 <th className="py-3 px-6 text-center">Status</th>
+                <th className='border-l-[1px] border-gray-300'/>
                 <th className="py-3 px-6 text-center">Actions</th>
               </tr>
             </thead>
@@ -81,22 +86,25 @@ const AdminOrders = () => {
 
             {
                 orders?.map((order, index)=>(
-                    <tr key={index} className="border-b border-gray-200 hover:bg-gray-100">
+                    <tr key={index} className="border-b-[1px] border-gray-300 hover:bg-gray-100">
                         <td className="py-3 px-6 text-left whitespace-nowrap">
                             <div className="flex items-center">
                                 <span className="font-medium">{order.id}</span>
                             </div>
                         </td>
 
+                        <td className='border-l-[1px] border-gray-300'/>
+
                         <td className="py-3 px-6 text-left">
                             {
                                 order?.items?.map((item, index)=>(
-                                    <Link key={index} target='_blank' to={item.itemUrl}>
-                                        <div className="flex items-center">
-                                            <img className="mr-2 w-6 h-6 rounded-full" src={item.thumbnail}/>
+                                    <Link key={index} target='_blank' to={item?.itemUrl}>
+                                        <div className="flex items-center my-5">
+                                            <img className="mr-2 w-6 h-6 rounded-full" src={item?.product.thumbnail}/>
                                             <div className='flex items-center space-x-2'>
-                                                <span className='font-medium'>{item.title} -</span>
-                                                <span className='font-medium'>${discountedPrice(item)}</span>
+                                                <span className='font-medium hover:text-red-600'>{item?.product.title} -</span>
+                                                <span className='font-medium'>${discountedPrice(item?.product)}</span>
+                                                <span className='font-medium text-red-600'>x {item.quantity}</span>
                                             </div>
                                         </div>
                                     </Link>
@@ -104,17 +112,15 @@ const AdminOrders = () => {
                             }
                         </td>
 
-                        <td className="py-3 px-6 text-center">
-                            <div className="flex items-center justify-center">
-                                <span className='font-medium'>x {order.totalItems}</span>
-                            </div>
-                        </td>
+                        <td className='border-l-[1px] border-gray-300'/>
 
                         <td className="py-3 px-6 text-center">
                             <div className="flex items-center justify-center">
                                 <span className='font-medium'>${order.totalAmount}</span>
                             </div>
                         </td>
+
+                        <td className='border-l-[1px] border-gray-300'/>
 
                         <td className="py-3 px-6 text-center">
                             <div className='font-semibold'>{order.selectedAddress?.name},</div>
@@ -124,6 +130,8 @@ const AdminOrders = () => {
                             <div>{order.selectedAddress?.pinCode},</div>
                             <div>{order.selectedAddress?.phone}</div>
                         </td>
+
+                        <td className='border-l-[1px] border-gray-300'/>
 
                         <td className="py-3 px-6 text-center space-x-4">
                               {editableOrderid === order.id ? <select className='outline-none rounded-md py-1' value={order.status} onChange={(e)=>handleUpdate(e, order)}>
@@ -138,6 +146,8 @@ const AdminOrders = () => {
                                 </span>
                               }                            
                         </td>
+
+                        <td className='border-l-[1px] border-gray-300'/>
 
                         <td className="py-3 px-6 text-center">
                             <div className="flex item-center justify-center">
@@ -157,7 +167,7 @@ const AdminOrders = () => {
             </tbody>
           </table>
 
-          <Pagination handlePgination={handlePgination} totalOrders={totalOrders} page={page} setPage={setPage}></Pagination>
+          <Pagination handlePgination={handlePgination} totalItems={totalOrders} page={page} setPage={setPage}></Pagination>
         </div>
 
       </div>
@@ -171,57 +181,3 @@ const AdminOrders = () => {
 }
 
 export default AdminOrders
-
-const Pagination = ({ handlePgination, page, setPage, totalOrders }) => {
-
-    const totalPages = Math.ceil(totalOrders/ITEMS_PER_PAGE);
-  
-    return (
-      <div className="flex items-center justify-between border-t border-gray-200 bg-white px-4 py-3 sm:px-6">
-        <div className="flex flex-1 justify-between sm:hidden">
-          <button disabled={page===1? true : false} onClick={()=>setPage(page-1)} className="cursor-pointer relative inline-flex items-center rounded-md border border-gray-300 bg-white px-4 py-2 tex font-medium text-gray-700 hover:bg-gray-50">
-            Previous
-          </button>
-          <button disabled={page===totalPages? true : false} onClick={()=>setPage(page+1)} className="cursor-pointer relative ml-3 inline-flex items-center rounded-md border border-gray-300 bg-white px-4 py-2 tex  font-medium text-gray-700 hover:bg-gray-50">
-            Next
-          </button>
-        </div>
-        <div className="hidden sm:flex sm:flex-1 sm:items-center sm:justify-between">
-          <div>
-            <p className="text-sm text-gray-700">
-              Showing <span className="font-medium">{(page-1)*ITEMS_PER_PAGE+1}</span> to{" "}
-              <span className="font-medium">{page *ITEMS_PER_PAGE > totalOrders? totalOrders : page*ITEMS_PER_PAGE}</span> of{" "}
-              <span className="font-medium">{totalOrders}</span> results
-            </p>
-          </div>
-          <div>
-            <nav
-              className="isolate inline-flex -space-x-px rounded-md shadow-sm"
-              aria-label="Pagination"
-            >
-              <button disabled={page===1? true : false} onClick={()=>setPage(page-1)} className="relative inline-flex items-center rounded-l-md px-2 py-2 text-gray-400 ring-1 ring-i ring-gray-300 hover:bg-gray-50 focus:z-20 focus:outline-offset-0">
-                <span className="sr-only">Previous</span>
-                <ChevronLeftIcon className="h-5 w-5" aria-hidden="true" />
-              </button>
-  
-              {/* Dynamic pages here */}
-              {
-                Array.from({length:Math.ceil(totalPages)}).map((elem, index)=>(
-                  <span key={index} aria-current="page"
-                  onClick={(e)=>handlePgination(index+1)}
-                   className={`cursor-pointer relative z-10 inline-flex items-center ${index+1 === page? 'bg-indigo-600 text-white hover:bg-indigo-700': 'bg-white text-black hover:bg-gray-50'} px-4 py-2 text-sm font-semibold text-w  focus:z-20 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offs focus-visible:outline-indigo-600 ring-1 ring-i ring-gray-300`}>
-                      {index+1}
-                  </span>
-                ))
-              }
-              
-              <button disabled={page===totalPages ? true : false} onClick={()=>setPage(page+1)} className="relative inline-flex items-center rounded-r-md px-2 py-2 text-gray-400 ring-1 ring-i ring-gray-300 hover:bg-gray-50 focus:z-20 focus:outline-offset-0">
-                <span className="sr-only">Next</span>
-                <ChevronRightIcon className="h-5 w-5" aria-hidden="true" />
-              </button>
-            </nav>
-          </div>
-        </div>
-      </div>
-    );
-  };
