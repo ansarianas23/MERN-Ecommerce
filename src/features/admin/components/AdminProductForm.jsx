@@ -4,6 +4,7 @@ import { useDispatch, useSelector } from 'react-redux';
 import { clearSelectedProduct, createProductAsync, fetchProductByIdAsync, selectAllBrands, selectAllCategories, selectProduct, updateProductAsync } from '../../product/ProductSlice';
 import { useForm } from 'react-hook-form';
 import { useParams } from 'react-router-dom';
+import { useAlert } from "react-alert";
 
 
 
@@ -15,6 +16,7 @@ const AdminProductForm = () => {
   const params = useParams();
   const selectedProduct = useSelector(selectProduct);
   const [isEdit, setIsEdit] = useState(false);
+  const alert = useAlert();
 
   // console.log('selected product is', selectedProduct);
 
@@ -76,9 +78,13 @@ const AdminProductForm = () => {
         product.id = params.id;
         product.rating = selectedProduct.rating || 0;
         dispatch(updateProductAsync(product));
+        // TODO: these alerts should check whether api call was successfull or not then only show this alert
+        alert.success("Product Updated Successfully");
         reset();
       }else{
         dispatch(createProductAsync(product));
+        // TODO: these alerts should check whether api call was successfull or not then only show this alert
+        alert.success("Product Created Successfully");
         reset();
       }
     })}>

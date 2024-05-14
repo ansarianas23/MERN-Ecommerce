@@ -1,7 +1,6 @@
 import React, { useEffect } from "react";
 import { useState } from 'react'
 import { StarIcon } from '@heroicons/react/20/solid'
-import { RadioGroup } from '@headlessui/react'
 import { useDispatch, useSelector } from "react-redux";
 import { fetchProductByIdAsync, selectProduct } from "../ProductSlice";
 import { useParams } from "react-router-dom";
@@ -56,28 +55,18 @@ const ProductDetails = () => {
     const handleCart = (e)=>{
       e.preventDefault();
 
-      const newItem = {
-        quantity:1,
-        product:product.id,
-        user:user?.id,
-        itemUrl: fullUrl
+      if(cart.findIndex((item)=>item.product.id === product.id)<0){
+        const newItem = {
+              quantity:1,
+              product:product.id,
+              user:user.id,
+              itemUrl: fullUrl
+            }
+        dispatch(addToCartAsync(newItem));
+        alert.success("Item Added in cart");
+      }else{
+        alert.show("Item Already added in cart");
       }
-      dispatch(addToCartAsync(newItem));
-
-      
-      // will fix this code later
-    //   if(cart.findIndex((item)=>item.product.id === product.id)<0){
-    //     const newItem = {
-    //           quantity:1,
-    //           product:product.id,
-    //           user:user.id,
-    //           itemUrl: fullUrl
-    //         }
-    //     dispatch(addToCartAsync(newItem));
-    //     alert.success("Item Added in cart");
-    //   }else{
-    //     alert.show("Item Already added in cart");
-    //   }
     }
 
     useEffect(()=>{
