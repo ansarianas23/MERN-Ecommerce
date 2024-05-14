@@ -11,15 +11,14 @@ const OrderSuccessPage = () => {
   const dispacth = useDispatch();
 
   const user = useSelector(selectLoggedInUser);
-  let userObj = user[0]; 
 
   useEffect(()=>{
     // resetting cart
-    dispacth(resetCartAsync(userObj?.id));
+    dispacth(resetCartAsync(user.id));
 
     // resetting current order
     dispacth(resetOrder());
-  },[dispacth, userObj])
+  },[dispacth, user])
 
   return (
     <>
