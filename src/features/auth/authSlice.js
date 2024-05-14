@@ -3,7 +3,7 @@ import { createUser, loginUser } from "./authAPI";
 import { updateUser } from "../user/UserAPI";
 
 const initialState = {
-    loggedInUser: null,
+    loggedInUser: null,     // this should only contain user identity like "id", "role"
     status: 'idle',
     error: null
 }

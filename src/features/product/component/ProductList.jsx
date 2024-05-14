@@ -189,7 +189,7 @@ export default ProductList;
 
 const ProductGrid = ({ products, status }) => {
 
-  const filteredData = products.filter((product)=> product.deleted !== true);
+  // const filteredData = products.filter((product)=> product.deleted !== true);
   // this is done because some products are with deleted flag in the api so we are not showing them to user only visible to admin.
   // in api deleted products are also there thats why we are filtering them.
 
@@ -207,7 +207,7 @@ const ProductGrid = ({ products, status }) => {
             wrapperClass="color-ring-wrapper"
             colors={['#e15b64', '#f47e60', '#f8b26a', '#abbd81', '#849b87']}
             />: null}
-            {filteredData?.map((product) => (
+            {products?.map((product) => (
               <Link to={`/product-details/${product?.id}`} key={product?.id}>
                 <Product data={product} />
               </Link>

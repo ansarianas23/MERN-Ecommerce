@@ -25,7 +25,7 @@ const Cart = () => {
   }
 
   const handleQuantity = (e, item)=>{
-    dispatch(updateCartAsync({id:item.id, qty: +e.target.value}));
+    dispatch(updateCartAsync({id:item.id, quantity: +e.target.value}));
     // console.log("option item", e.target.value, item); 
   }
 
@@ -65,8 +65,8 @@ const Cart = () => {
                     </div>
                     <div className="flex flex-1 items-end justify-between text-sm">
                       <div className="text-gray-500">
-                      <label htmlFor="qty">Qty</label> 
-                        <select onChange={(e)=>handleQuantity(e, item)} value={item.qty} id="qty" className="mx-2 rounded-md">
+                      <label htmlFor="quantity">Qty</label> 
+                        <select onChange={(e)=>handleQuantity(e, item)} value={item.quantity} id="quantity" className="mx-2 rounded-md">
                           <option value="1">1</option>
                           <option value="2">2</option>
                           <option value="3">3</option>

@@ -18,15 +18,17 @@ const Checkout = () => {
   const currentOrder = useSelector(selectCurrentOrder);  
 
   const cartTotalAmount = cart?.reduce((total, item)=>{
-    return total + discountedPrice(item.product) * item.qty;
+    return total + discountedPrice(item.product) * item.quantity;
   },0);
 
   const totalItems = cart?.reduce((total, item)=>{
-    return item.qty + total;
+    return item.quantity + total;
   },0);
 
   const handleQuantity = (e, item)=>{
-    dispatch(updateCartAsync({id: item.id, qty: +e.target.value}));
+    dispatch(updateCartAsync(
+      {id: item.id, quantity: +e.target.value}
+    ));
   }
 
   const handleDeleteItem = (e, itemId)=>{
@@ -46,7 +48,7 @@ const Checkout = () => {
       items: cart,
       totalAmount: cartTotalAmount, 
       totalItems,
-      user:user, 
+      user:user.id, 
       paymentMethod, 
       selectedAddress, 
       status: 'pending' // once product delivered admin can change the status
@@ -311,7 +313,7 @@ const Checkout = () => {
                                 <a href={item.product.itemUrl}>{item.product.title}</a>
                               </h3>
                               <div>
-                                <p className="ml-4">$ {discountedPrice(item)}</p>
+                                <p className="ml-4">$ {discountedPrice(item.product)}</p>
                                 <p className="ml-4 text-sm line-through text-gray-500">$ {item.product.price}</p>
                               </div>
                             </div>
@@ -321,8 +323,8 @@ const Checkout = () => {
                           </div>
                           <div className="flex flex-1 items-end justify-between text-sm">
                             <div className="text-gray-500">
-                              <label htmlFor="qty">Qty</label>
-                              <select onChange={(e)=>handleQuantity(e, item)} value={item.qty} id="qty" className="mx-2 rounded-md">
+                              <label htmlFor="quantity">Qty</label>
+                              <select onChange={(e)=>handleQuantity(e, item)} value={item.quantity} id="quantity" className="mx-2 rounded-md">
                                 <option value="1">1</option>
                                 <option value="2">2</option>
                                 <option value="3">3</option>

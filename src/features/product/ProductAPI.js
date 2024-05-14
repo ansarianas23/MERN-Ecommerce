@@ -9,9 +9,9 @@ export function fetchAllProductsCount(){
 // To fetch a single product by specific id
 export function fetchProductById(id){
     return new Promise(async (resolve)=>{
-        const response = await fetch(`http://localhost:8080/products?id=${+id}`);
+        const response = await fetch('http://localhost:8080/products/'+id);
         const data = await response.json();
-        resolve(data[0]);
+        resolve(data);
     })
 }
 

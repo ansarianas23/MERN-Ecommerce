@@ -45,6 +45,7 @@ const ProductDetails = () => {
 
     const dispatch = useDispatch();
     const product = useSelector(selectProduct);
+    // console.log('product', product);
     const { id } = useParams();
     const user = useSelector(selectLoggedInUser);
     const cart = useSelector(selectedCartItems);
@@ -58,7 +59,7 @@ const ProductDetails = () => {
       const newItem = {
         quantity:1,
         product:product.id,
-        user:user.id,
+        user:user?.id,
         itemUrl: fullUrl
       }
       dispatch(addToCartAsync(newItem));
@@ -150,7 +151,7 @@ const ProductDetails = () => {
 
             <form className="mt-10">
               {/* Colors */}
-              <div>
+              {/* <div>
                 <h3 className="text-sm font-medium text-gray-900">Color</h3>
 
                 <RadioGroup
@@ -189,10 +190,10 @@ const ProductDetails = () => {
                     ))}
                   </div>
                 </RadioGroup>
-              </div>
+              </div> */}
 
               {/* Sizes */}
-              <div className="mt-10">
+              {/* <div className="mt-10">
                 <div className="flex items-center justify-between">
                   <h3 className="text-sm font-medium text-gray-900">Size</h3>
                   <a className="text-sm font-medium text-indigo-600 hover:text-indigo-500">
@@ -267,7 +268,7 @@ const ProductDetails = () => {
                     ))}
                   </div>
                 </RadioGroup>
-              </div>
+              </div> */}
 
               <button onClick={handleCart} className="mt-10 flex w-full items-center justify-center rounded-md border border-transparent bg-indigo-600 px-8 py-3 text-base font-medium text-white hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2">
                 Add to Cart
