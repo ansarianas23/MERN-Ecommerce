@@ -1,14 +1,14 @@
 export function fetchLoggedinUserOrders(userId){
     return new Promise(async (resolve)=>{
-        const response = await fetch('http://localhost:8080/orders/user/'+userId)
+        const response = await fetch('http://localhost:8080/orders');
         const data = await response.json()
         resolve(data);
     })
 }
 
-export function fetchLoggedinUser(userId){
+export function fetchLoggedinUser(){
     return new Promise(async (resolve)=>{
-        const response = await fetch('http://localhost:8080/users/'+userId);
+        const response = await fetch('http://localhost:8080/users/own');
         const data = await response.json()
         resolve(data);
     })

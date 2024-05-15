@@ -6,7 +6,6 @@ import { useDispatch, useSelector } from "react-redux";
 import { fetchProductByIdAsync, selectProduct } from "../../product/ProductSlice";
 import { useParams } from "react-router-dom";
 import { addToCartAsync } from "../../cart/CartSlice";
-import { selectLoggedInUser } from "../../auth/authSlice";
 import { discountedPrice } from "../../../utils/constants";
 
 const colors = [
@@ -45,13 +44,12 @@ const AdminProductDetails = () => {
     const dispatch = useDispatch();
     const product = useSelector(selectProduct);
     const { id } = useParams();
-    const user = useSelector(selectLoggedInUser);
 
     let fullUrl = window.location.href;
 
     const handleCart = (e)=>{
       e.preventDefault();
-      const newItem = {...product, qty:1, user:user[0]?.id, itemUrl: fullUrl}
+      const newItem = {...product, qty:1, itemUrl: fullUrl}
       delete newItem['id'];
       dispatch(addToCartAsync(newItem));
     }

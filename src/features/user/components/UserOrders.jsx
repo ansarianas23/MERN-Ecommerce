@@ -12,7 +12,7 @@ const UserOrders = () => {
 
     useEffect(()=>{
       if(user){
-        dispatch(fetchLoggedinUserOrdersAsync(user.id));
+        dispatch(fetchLoggedinUserOrdersAsync());
       }
     },[]);
 

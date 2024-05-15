@@ -11,7 +11,7 @@ const ProtectedAdmin = ({chidlren}) => {
     if(!user){
         return <Navigate to="/login" replace={true}></Navigate>
     }
-    if(userInfo && userInfo.role !== 'admin'){
+    if(user && userInfo.role !== 'admin'){
         return <Navigate to="/" replace={true}></Navigate>
     }
 
