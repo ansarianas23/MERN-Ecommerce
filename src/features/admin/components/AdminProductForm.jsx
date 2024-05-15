@@ -32,7 +32,7 @@ const AdminProductForm = () => {
 
   useEffect(()=>{
     // this ensure that if there is selected product form redux by id means populate all the fields as it is edit form
-    if(selectedProduct){
+    if(selectedProduct && params.id){
       setValue('title', selectedProduct.title);
       setValue('description', selectedProduct.description);
       setValue('price', selectedProduct.price);
@@ -45,7 +45,7 @@ const AdminProductForm = () => {
       setValue('image2', selectedProduct.images[1]);
       setValue('image3', selectedProduct.images[2]);
     }
-  },[selectedProduct,params.id, setValue]);
+  },[selectedProduct, params.id, setValue]);
 
 
   const handleDelete = ()=>{
@@ -303,10 +303,11 @@ const AdminProductForm = () => {
         Delete
       </button>}
 
-      <button
-        className="rounded-md bg-gray-600 px-3 py-2 text-sm font-semibold text-white shadow-sm hover:bg-gray-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-gray-600">
+      <div
+        onClick={(e)=>{e.preventDefault(), window.history.back()}}
+        className="cursor-pointer rounded-md bg-gray-600 px-3 py-2 text-sm font-semibold text-white shadow-sm hover:bg-gray-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-gray-600">
         Cancel
-      </button>
+      </div>
 
       <button
         type="submit"
