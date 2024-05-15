@@ -1,6 +1,6 @@
-export function fetchLoggedinUserOrders(userId){
+export function fetchLoggedinUserOrders(){
     return new Promise(async (resolve)=>{
-        const response = await fetch('http://localhost:8080/orders');
+        const response = await fetch('http://localhost:8080/orders/own');
         const data = await response.json()
         resolve(data);
     })

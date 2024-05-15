@@ -1,7 +1,8 @@
 import React, { useEffect } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
-import { fetchLoggedinUserOrdersAsync, selectUserInfo, selectUserOrders } from '../UserSlice';
+import { fetchLoggedinUserOrdersAsync, selectUserInfo, selectUserInfoStatus, selectUserOrders } from '../UserSlice';
 import { discountedPrice } from '../../../utils/constants';
+import { Grid } from 'react-loader-spinner';
 
 
 const UserOrders = () => {
@@ -9,6 +10,7 @@ const UserOrders = () => {
     const dispatch = useDispatch();
     const user = useSelector(selectUserInfo);
     const orders = useSelector(selectUserOrders);
+    const status = useSelector(selectUserInfoStatus)
 
     useEffect(()=>{
       if(user){
@@ -112,7 +114,7 @@ const UserOrders = () => {
             </div> 
         </div>
       ))}
-       {/* {status === 'loading' ? (
+       {status === 'loading' ? (
         <Grid
           height="80"
           width="80"
@@ -123,7 +125,7 @@ const UserOrders = () => {
           wrapperClass=""
           visible={true}
         />
-      ) : null} */}
+      ) : null}
     </>
   )
 }
