@@ -10,13 +10,13 @@ const UserOrders = () => {
     const dispatch = useDispatch();
     const user = useSelector(selectUserInfo);
     const orders = useSelector(selectUserOrders);
-    const status = useSelector(selectUserInfoStatus)
+    const status = useSelector(selectUserInfoStatus);
 
     useEffect(()=>{
       if(user){
         dispatch(fetchLoggedinUserOrdersAsync());
       }
-    },[]);
+    },[user]);
 
   return (
     <>

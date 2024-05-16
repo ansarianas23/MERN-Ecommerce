@@ -1,7 +1,7 @@
 import { React, useState } from "react";
 import { Link, Navigate } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
-import { deleteItemFromCartAsync, selectedCartItems, updateCartAsync } from "./CartSlice";
+import { deleteItemFromCartAsync, selectCartLoaded, selectedCartItems, updateCartAsync } from "./CartSlice";
 import { selectLoggedInUser } from "../auth/authSlice";
 import { selectUserInfo } from "../user/UserSlice";
 import { discountedPrice } from "../../utils/constants";
@@ -10,7 +10,7 @@ import { discountedPrice } from "../../utils/constants";
 const Cart = () => {
   const cart = useSelector(selectedCartItems);
   const dispatch = useDispatch();
-  const user = useSelector(selectUserInfo);
+  const cartLoaded = useSelector(selectCartLoaded);
 
   const cartTotalValue = cart?.reduce((total, item)=>{
     return total + discountedPrice(item.product) * item.quantity;
@@ -31,7 +31,7 @@ const Cart = () => {
 
   return (
     <>
-    {!cart.length && <Navigate to='/' replace={true}></Navigate>}
+    {cart.length==0 && cartLoaded && <Navigate to='/' replace={true}></Navigate>}
       <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 bg-white rounded-lg">
         <h2 className="text-lg md:text-3xl font-semibold py-3 border-b">Cart - ({cart?.length} items)</h2>
 

@@ -7,7 +7,7 @@ import { createBrowserRouter, RouterProvider } from "react-router-dom";
 import ProductDetailsPage from "./pages/ProductDetailsPage";
 import { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { selectLoggedInUser } from "./features/auth/authSlice";
+import { checkAuthAsync, selectLoggedInUser, selectUserChecked } from "./features/auth/authSlice";
 import { fetchItemsByUserIdAsync } from "./features/cart/CartSlice";
 import PageNotFound from "./pages/PageNotFound";
 import OrderSuccessPage from "./pages/OrderSuccessPage";
@@ -158,7 +158,12 @@ function App() {
 
   const dispatch = useDispatch();
   const user = useSelector(selectLoggedInUser);
-  // console.log('user from App js', user[0].id);
+  const userChecked = useSelector(selectUserChecked);
+
+  // to persist logged in user state
+  useEffect(()=>{
+    dispatch(checkAuthAsync())
+  },[dispatch]);
 
   // loading user cart
   useEffect(()=>{
@@ -170,9 +175,9 @@ function App() {
 
   return (
     <div className="App">
-      <Provider template={AlertTemplate} {...options}>
+      {userChecked && <Provider template={AlertTemplate} {...options}>
         <RouterProvider router={router} />
-      </Provider>
+      </Provider>}
     </div>
   );
 }

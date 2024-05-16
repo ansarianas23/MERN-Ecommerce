@@ -1,11 +1,12 @@
 import { createAsyncThunk, createSlice } from "@reduxjs/toolkit"
-import { createUser, loginUser } from "./authAPI";
+import { checkAuth, createUser, loginUser } from "./authAPI";
 import { updateUser } from "../user/UserAPI";
 
 const initialState = {
     loggedInUserToken: null,     // this should only contain user identity like "id", "role"
     status: 'idle',
-    error: null
+    error: null,
+    userChecked: false
 }
 
 export const createUserAsync = createAsyncThunk(
@@ -24,6 +25,18 @@ export const loginUserAsync = createAsyncThunk(
             return response;
         } catch (error) {
             return rejectWithValue(error)
+        }
+    }
+)
+
+export const checkAuthAsync = createAsyncThunk(
+    'auth/checkAuth',
+    async ()=>{
+        try {
+            const response  = await checkAuth();
+            return response;
+        } catch (error) {
+            console.log(error)
         }
     }
 )
@@ -67,6 +80,18 @@ export const authSlice = createSlice({
             state.status = 'idle'
             state.loggedInUserToken = null;
         })
+        .addCase(checkAuthAsync.pending, (state)=>{
+            state.status = 'loading'
+        })
+        .addCase(checkAuthAsync.fulfilled, (state, action)=>{
+            state.status = 'idle'
+            state.loggedInUserToken = action.payload;
+            state.userChecked = true;
+        })
+        .addCase(checkAuthAsync.rejected, (state, action)=>{
+            state.status = 'idle'
+            state.userChecked = true;
+        })
     }
 
 })
@@ -76,5 +101,6 @@ export const { incremenet } = authSlice.actions;
 
 export const selectLoggedInUser = (state)=>state.auth.loggedInUserToken;
 export const selectError = (state)=>state.auth.error;
+export const selectUserChecked = (state)=>state.auth.userChecked;
 
 export default authSlice.reducer;
