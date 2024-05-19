@@ -67,6 +67,7 @@ const ProductDetails = () => {
     }
 
     useEffect(()=>{
+      window.scrollTo(0, 0);
       dispatch(fetchProductByIdAsync(id));
     },[dispatch, id]);
 
